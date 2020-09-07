@@ -1,0 +1,68 @@
+@mixin text-size($base, $multiplier) {
+  font-size: $base + 0.33 * $multiplier;
+}
+
+.text-sm {
+  @include text-size(1rem, 0);
+}
+
+.text-sm-1 {
+  @include text-size(1rem, 1);
+}
+
+.text-sm-2 {
+  @include text-size(1rem, 2);
+}
+
+.text-sm-3 {
+  @include text-size(1rem, 3);
+}
+
+.text-md {
+  @include text-size(2rem, 0);
+}
+
+.text-md-1 {
+  @include text-size(2rem, 1);
+}
+
+.text-md-2 {
+  @include text-size(2rem, 2);
+}
+
+.text-md-3 {
+  @include text-size(2rem, 3);
+}
+
+.text-lg {
+  @include text-size(3rem, 0);
+}
+.text-lg-1 {
+  @include text-size(3rem, 1);
+}
+.text-lg-2 {
+  @include text-size(3rem, 2);
+}
+.text-lg-3 {
+  @include text-size(3rem, 3);
+}
+
+.text-xl {
+  @include text-size(4rem, 0);
+}
+
+.text-xl-1 {
+  @include text-size(4rem, 1);
+}
+
+.text-xl-2 {
+  @include text-size(4rem, 2);
+}
+
+.text-xl-3 {
+  @include text-size(4rem, 3);
+}
+
+.text-tight {
+  line-height: 100%;
+}

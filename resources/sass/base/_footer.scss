@@ -1,0 +1,12 @@
+footer {
+  min-height: $footer-height;
+  margin-top: -$footer-height;
+  background-color: black;
+  color: white;
+
+  .footer-info {
+    :not(.title) {
+      margin-bottom: 1rem;
+    }
+  }
+}

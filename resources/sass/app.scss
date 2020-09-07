@@ -1,1 +1,51 @@
-//
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Base
+@import "./base/footer";
+@import "./base/navbar";
+
+// Utilities
+@import "./utilities/text";
+@import "./utilities/colors";
+@import "./utilities/button";
+
+// Layout
+@import "./layout/profile";
+
+// Views
+@import "./views/home";
+
+html {
+  overflow: auto;
+}
+body {
+  overflow: hidden;
+}
+
+#wrapper {
+  min-height: 100vh;
+  #content {
+    padding-bottom: $footer-height + 10px;
+    padding-top: 10px;
+  }
+}
+
+.carousel {
+  height: 500px;
+  .carousel-inner {
+    height: 500px;
+    display: flex;
+    align-items: center;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

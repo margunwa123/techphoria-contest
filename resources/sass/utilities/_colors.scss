@@ -1,0 +1,15 @@
+@mixin color-modifiers($attribute: "color") {
+  @each $name, $hex in $colors {
+    &-#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+}
+
+.text {
+  @include color-modifiers;
+}
+
+.bg {
+  @include color-modifiers($attribute: "background");
+}

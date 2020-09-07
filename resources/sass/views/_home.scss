@@ -1,0 +1,19 @@
+#home {
+  section {
+    @extend .py-5;
+  }
+
+  #who-we-are {
+    .icon-and-text {
+      gap: 10px;
+      @extend .pb-3;
+      .icon {
+        @extend .text-sm-1;
+      }
+      .title {
+        font-weight: bold;
+        @extend .text-sm-1;
+      }
+    }
+  }
+}
