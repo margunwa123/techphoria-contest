@@ -40,6 +40,82 @@
                         </div>
 
                         <div class="form-group row">
+                          <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+
+                          <div class="col-md-6">
+                              <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
+
+                              @error('username')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+                      </div>
+
+                        <div class="form-group row">
+                          <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+                          <div class="col-md-6">
+                            <select name="gender" id="gender" class="form-control">
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                              <option value="other">Other</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
+
+                          <div class="col-md-6">
+                            <input id="age" type="number" min="0" class="form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age">
+                          </div>
+                          @error('age')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                          <div class="col-md-6">
+                            <input id="phone" type="text" min="0" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone">
+                          </div>
+                          @error('phone')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Register As') }}</label>
+
+                          <div class="col-md-6">
+                            <select name="type" id="type" class="form-control">
+                              <option value="client">Client</option>
+                              <option value="consultant">Consultant</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="job" class="col-md-4 col-form-label text-md-right">{{ __('Job') }}</label>
+
+                          <div class="col-md-6">
+                            <input id="job" type="text" min="0" class="form-control @error('job') is-invalid @enderror" name="job" required autocomplete="job">
+                          </div>
+                          @error('job')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
