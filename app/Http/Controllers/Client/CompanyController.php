@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+  private $mainDir = 'client.company.';
+  private $mainRoute = 'client.company.';
     /**
      * Display a listing of the resource.
      *

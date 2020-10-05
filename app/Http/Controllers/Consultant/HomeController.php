@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Consultant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PersonalRequestcontroller extends Controller
+class HomeController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -13,17 +13,6 @@ class PersonalRequestcontroller extends Controller
    * @return \Illuminate\Http\Response
    */
   public function index()
-  {
-    //
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
   {
     //
   }
