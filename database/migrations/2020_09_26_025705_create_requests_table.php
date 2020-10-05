@@ -15,6 +15,11 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("company_id");
+            $table->string("finance_type");
+            $table->text("description");
+            $table->unsignedBigInteger('fee');
+            $table->text('criteria');
             $table->timestamps();
         });
     }

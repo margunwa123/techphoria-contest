@@ -13,8 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+$baseDir = "App\Http\Controllers";
+
 Route::get('/', function () {
-  return view('home');
+  return view('welcome');
+});
+
+Route::namespace($baseDir . '\Client')->name('client.')->group(function() {
+  // Projects
+  Route::resource('project','ProjectController')->except('create', 'store', 'edit', 'update ');
+  // Requests
+  Route::resource('request','RequestController');
 });
 
 Auth::routes();

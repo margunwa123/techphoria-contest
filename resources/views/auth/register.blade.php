@@ -69,7 +69,7 @@
                           <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
 
                           <div class="col-md-6">
-                            <input id="age" type="number" min="0" class="form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age">
+                            <input id="age" type="number" min="0" class="form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" value="{{ old('age') }}">
                           </div>
                           @error('age')
                               <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
                           <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                           <div class="col-md-6">
-                            <input id="phone" type="text" min="0" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone">
+                            <input id="phone" type="text" min="0" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone" value="{{ old('phone') }}">
                           </div>
                           @error('phone')
                               <span class="invalid-feedback" role="alert">
@@ -92,10 +92,10 @@
                         </div>
 
                         <div class="form-group row">
-                          <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Register As') }}</label>
+                          <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Register As') }}</label>
 
                           <div class="col-md-6">
-                            <select name="type" id="type" class="form-control">
+                            <select name="role" id="role" class="form-control">
                               <option value="client">Client</option>
                               <option value="consultant">Consultant</option>
                             </select>
@@ -106,7 +106,7 @@
                           <label for="job" class="col-md-4 col-form-label text-md-right">{{ __('Job') }}</label>
 
                           <div class="col-md-6">
-                            <input id="job" type="text" min="0" class="form-control @error('job') is-invalid @enderror" name="job" required autocomplete="job">
+                            <input id="job" type="text" min="0" class="form-control @error('job') is-invalid @enderror" name="job" required autocomplete="job" value="{{ old('job') }}">
                           </div>
                           @error('job')
                               <span class="invalid-feedback" role="alert">

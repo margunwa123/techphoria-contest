@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    This is the home view
+    Welcome
 </div>
 @endsection

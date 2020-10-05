@@ -3,23 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
 
-class RequestController extends Controller
+class CompanyController extends Controller
 {
-    private $mainDir = "client.request.";
-    private $mainRoute = "client.request.";
-
-    private function validator(Request $request) {
-      return $request->validate([
-        ''
-      ]);
-    }
-
-    public function __construct() {
-      $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +14,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-      $requests = ModelsRequest::all();
-      return view($this->mainDir . 'index', compact("requests"));
+        //
     }
 
     /**
@@ -38,7 +24,7 @@ class RequestController extends Controller
      */
     public function create()
     {
-      return view($this->mainDir . 'create');
+        //
     }
 
     /**
@@ -49,8 +35,7 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-      $requests = ModelsRequest::where();
-      return redirect(route($this->mainRoute . 'show', compact('requests')));
+        //
     }
 
     /**
