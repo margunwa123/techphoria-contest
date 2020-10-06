@@ -15,6 +15,10 @@
 // Utilities
 @import "utilities/color";
 
+// > Pages
+// 1> Landing
+@import "blocks/landing/landing";
+
 #wrapper {
   min-height: 100vh;
   #content {

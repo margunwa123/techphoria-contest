@@ -10900,7 +10900,7 @@ a.text-dark:focus {
 }
 
 /*!
- * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -11162,10 +11162,6 @@ readers do not read off random characters that represent icons */
 
 .fa-adn:before {
   content: "\F170";
-}
-
-.fa-adobe:before {
-  content: "\F778";
 }
 
 .fa-adversal:before {
@@ -12218,6 +12214,10 @@ readers do not read off random characters that represent icons */
 
 .fa-cloud-upload-alt:before {
   content: "\F382";
+}
+
+.fa-cloudflare:before {
+  content: "\E07D";
 }
 
 .fa-cloudscale:before {
@@ -13544,6 +13544,10 @@ readers do not read off random characters that represent icons */
   content: "\F3AD";
 }
 
+.fa-guilded:before {
+  content: "\E07E";
+}
+
 .fa-guitar:before {
   content: "\F7A6";
 }
@@ -13776,6 +13780,10 @@ readers do not read off random characters that represent icons */
   content: "\F1DA";
 }
 
+.fa-hive:before {
+  content: "\E07F";
+}
+
 .fa-hockey-puck:before {
   content: "\F453";
 }
@@ -13948,12 +13956,20 @@ readers do not read off random characters that represent icons */
   content: "\F05A";
 }
 
+.fa-innosoft:before {
+  content: "\E080";
+}
+
 .fa-instagram:before {
   content: "\F16D";
 }
 
 .fa-instagram-square:before {
   content: "\E055";
+}
+
+.fa-instalod:before {
+  content: "\E081";
 }
 
 .fa-intercom:before {
@@ -14648,6 +14664,10 @@ readers do not read off random characters that represent icons */
   content: "\F248";
 }
 
+.fa-octopus-deploy:before {
+  content: "\E082";
+}
+
 .fa-odnoklassniki:before {
   content: "\F263";
 }
@@ -14830,6 +14850,10 @@ readers do not read off random characters that represent icons */
 
 .fa-pepper-hot:before {
   content: "\F816";
+}
+
+.fa-perbyte:before {
+  content: "\E083";
 }
 
 .fa-percent:before {
@@ -16392,6 +16416,10 @@ readers do not read off random characters that represent icons */
   content: "\F5CA";
 }
 
+.fa-uncharted:before {
+  content: "\E084";
+}
+
 .fa-underline:before {
   content: "\F0CD";
 }
@@ -16596,6 +16624,14 @@ readers do not read off random characters that represent icons */
   content: "\F228";
 }
 
+.fa-vest:before {
+  content: "\E085";
+}
+
+.fa-vest-patches:before {
+  content: "\E086";
+}
+
 .fa-viacoin:before {
   content: "\F237";
 }
@@ -16716,6 +16752,10 @@ readers do not read off random characters that represent icons */
   content: "\F494";
 }
 
+.fa-watchman-monitoring:before {
+  content: "\E087";
+}
+
 .fa-water:before {
   content: "\F773";
 }
@@ -16814,6 +16854,10 @@ readers do not read off random characters that represent icons */
 
 .fa-wizards-of-the-coast:before {
   content: "\F730";
+}
+
+.fa-wodu:before {
+  content: "\E088";
 }
 
 .fa-wolf-pack-battalion:before {
@@ -16942,7 +16986,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -16951,8 +16995,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?0fabb6606be4c45acfeedd115d0caca4);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?0fabb6606be4c45acfeedd115d0caca4) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?cac68c831145804808381a7032fdc7c2) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?dc0bd022735ed218df547742a1b2f172) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?085b1dd8427dbeff10bd55410915a3f6) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?ccfdb9dc442be0c629d331e94497428b) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?e2ca6541bff3a3e9f4799ee327b28c58);
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?e2ca6541bff3a3e9f4799ee327b28c58) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?f075c50f89795e4cdb4d45b51f1a6800) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?ad527cc5ec23d6da66e8a1d6772ea6d3) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?8300bd7f30e0a313c1d772b49d96cb8e) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?2f12242375edd68e9013ecfb59c672e9) format("svg");
 }
 
 .fab {
@@ -16961,7 +17005,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -16970,8 +17014,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?89bd2e38475e441a5cd70f663f921d61);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?89bd2e38475e441a5cd70f663f921d61) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?c500da19d776384ba69573ae6fe274e7) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?ee09ad7553b8ad3d81150d609d5341a0) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?781e85bb50c8e8301c30de56b31b1f04) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?03ba7cb710104df27f1c9c46d64bee4e) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?8ac3167427b1d5d2967646bd8f7a0587);
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?8ac3167427b1d5d2967646bd8f7a0587) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?8e1ed89b6ccb8ce41faf5cb672677105) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?4451e1d86df7491dd874f2c41eee1053) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?205f07b3883c484f27f40d21a92950d4) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?664de3932dd6291b4b8a8c0ddbcb4c61) format("svg");
 }
 
 .fa,
@@ -16981,11 +17025,19 @@ readers do not read off random characters that represent icons */
 }
 
 .bg-blue {
-  background-color: #3490dc;
+  background-color: #1c60db;
 }
 
 .text-blue {
-  color: #3490dc;
+  color: #1c60db;
+}
+
+.bg-darkblue {
+  background-color: #0f3b88;
+}
+
+.text-darkblue {
+  color: #0f3b88;
 }
 
 .bg-black {
@@ -17021,11 +17073,11 @@ readers do not read off random characters that represent icons */
 }
 
 .bg-red {
-  background-color: #e3342f;
+  background-color: #e83d47;
 }
 
 .text-red {
-  color: #e3342f;
+  color: #e83d47;
 }
 
 .bg-orange {
@@ -17046,11 +17098,19 @@ footer .title::before {
 }
 
 .bg-green {
-  background-color: #38c172;
+  background-color: #0cbf74;
 }
 
 .text-green {
-  color: #38c172;
+  color: #0cbf74;
+}
+
+.bg-darkgreen {
+  background-color: #085e16;
+}
+
+.text-darkgreen {
+  color: #085e16;
 }
 
 .bg-teal {
@@ -17085,18 +17145,111 @@ footer .title::before {
   color: #f47d38;
 }
 
+.bg-blue-gradient {
+  background-color: linear-gradient(169.52deg, #3a8ef1 6.78%, #1759d8 94.32%);
+}
+
+.text-blue-gradient {
+  color: linear-gradient(169.52deg, #3a8ef1 6.78%, #1759d8 94.32%);
+}
+
+.bg-grey1 {
+  background-color: #423c3c;
+}
+
+.text-grey1 {
+  color: #423c3c;
+}
+
+.bg-grey2 {
+  background-color: #374454;
+}
+
+.text-grey2 {
+  color: #374454;
+}
+
+.hero-container {
+  height: 800px;
+  background: linear-gradient(180deg, #a2fdd7 0%, rgba(250, 252, 255, 0) 100%);
+}
+
+.hero-logo {
+  margin: 3rem;
+  height: 200px;
+}
+
+.hero-text {
+  margin: 0 4rem;
+  width: 800px;
+  font-size: 30px;
+}
+
+.hero-bars {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.aid-container {
+  background: linear-gradient(180deg, rgba(240, 248, 255, 0) -0.92%, #e3f2ff 99.08%);
+}
+
+.about {
+  padding: 10rem 0 5rem;
+}
+
+.about-logo {
+  width: 350px;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.about-text .about-desc {
+  padding: 1rem;
+}
+
+.about-text .about-btn {
+  margin-top: 1rem;
+  border-radius: 10rem;
+  background: linear-gradient(180deg, #3a8ef1 6.78%, #1759d8 94.32%);
+}
+
+.about-text .about-btn * {
+  font-weight: 600;
+}
+
+.about-text .about-btn:hover {
+  background: linear-gradient(180deg, #559ef1 6.78%, #346dd6 94.32%);
+}
+
+.about-text .about-btn:active {
+  background: linear-gradient(0deg, #559ef1 6.78%, #346dd6 94.32%);
+}
+
+.aid-col .aid-logo {
+  margin-top: 2rem;
+  height: 150px;
+}
+
 #wrapper {
   min-height: 100vh;
 }
 
 #wrapper #content {
   padding-top: 70px;
-  padding-bottom: 310px;
+  padding-bottom: 210px;
 }
 
 footer {
-  height: 300px;
-  margin-top: -300px;
+  height: 200px;
+  margin-top: -200px;
   background-color: black;
   color: white;
 }

@@ -1,5 +1,5 @@
 <footer>
-  <footer class="py-3 position-relative">
+  <footer class="py-3 position-relative sticky-bottom">
     <div class="container">
       <div class="row">
         <div class="col-md-3 footer-info">

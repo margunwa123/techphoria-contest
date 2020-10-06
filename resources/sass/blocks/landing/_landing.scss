@@ -1,0 +1,73 @@
+.hero-container {
+  height: 800px;
+
+  background: linear-gradient(180deg, #a2fdd7 0%, rgba(250, 252, 255, 0) 100%);
+}
+
+.hero-logo {
+  margin: 3rem;
+  height: 200px;
+}
+
+.hero-text {
+  margin: 0 4rem;
+  width: 800px;
+  font-size: 30px;
+}
+
+.hero-bars {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.aid-container {
+  background: linear-gradient(
+    180deg,
+    rgba(240, 248, 255, 0) -0.92%,
+    #e3f2ff 99.08%
+  );
+}
+
+.about {
+  padding: 10rem 0 5rem;
+}
+
+.about-logo {
+  width: 350px;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  justify-content: center;
+  align-items: flex-start;
+
+  .about-desc {
+    padding: 1rem;
+  }
+
+  .about-btn {
+    margin-top: 1rem;
+    border-radius: 10rem;
+    background: linear-gradient(180deg, #3a8ef1 6.78%, #1759d8 94.32%);
+    * {
+      font-weight: 600;
+    }
+    &:hover {
+      background: linear-gradient(180deg, #559ef1 6.78%, #346dd6 94.32%);
+    }
+
+    &:active {
+      background: linear-gradient(0deg, #559ef1 6.78%, #346dd6 94.32%);
+    }
+  }
+}
+
+.aid-col {
+  .aid-logo {
+    margin-top: 2rem;
+    height: 150px;
+  }
+}
