@@ -26,6 +26,20 @@
                       </li>
                   @endif
               @else
+                @if (Auth::user()->isClient())
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.consultant.index') }}">Consultants</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.request.index') }}">Requests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.project.index') }}">Project</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.company.index') }}">Companies</a>
+                  </li>
+                @endif
                   <li class="nav-item dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->name }}

@@ -15,6 +15,18 @@ class ProjectController extends Controller
     $this->middleware('auth')->only(['index', 'destroy']);
   }
 
+  public function index()
+  {
+    $companies = auth()->user()->companies();
+    $projects = [];
+    foreach ($companies as $company) {
+      foreach ($company->projects as $project) {
+        array_push($projects, $project);
+      }
+    }
+    return view($this->mainDir . 'index', compact('projects'));
+  }
+
   /**
    * Display the specified resource.
    *

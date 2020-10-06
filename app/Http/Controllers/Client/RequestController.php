@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
 {
@@ -21,6 +22,18 @@ class RequestController extends Controller
   public function __construct()
   {
     $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
+  }
+
+  public function index()
+  {
+    $companies = auth()->user()->companies();
+    $requests = [];
+    foreach ($companies as $company) {
+      foreach ($company->requests as $request) {
+        array_push($requests, $request);
+      }
+    }
+    return view($this->mainDir . 'index', compact('requests'));
   }
 
   /**
