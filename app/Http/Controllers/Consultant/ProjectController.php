@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+  private $mainDir = 'consultant.project.';
+  private $mainRoute = 'consultant.project.';
   /**
    * Display the specified resource.
    *
@@ -16,7 +18,7 @@ class ProjectController extends Controller
    */
   public function index(Project $project)
   {
-    //
+    return view($this->mainDir . 'index');
   }
 
   /**
@@ -27,7 +29,7 @@ class ProjectController extends Controller
    */
   public function show(Project $project)
   {
-    //
+    return view($this->mainDir . 'show');
   }
 
   /**
@@ -39,6 +41,7 @@ class ProjectController extends Controller
    */
   public function destroy(Project $project)
   {
-    //
+    $project->delete();
+    return redirect(route($this->mainRoute . 'index'));
   }
 }

@@ -1,31 +1,22 @@
 <?php
 
-namespace App\Models\Client;
+namespace App\Models;
 
-use App\Models\CompletedProject;
-use App\Models\PersonalRequest;
-use App\Models\Project;
-use App\Models\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Consultant extends Model
 {
   use HasFactory;
-
-  public function user()
-  {
-    return $this->belongsTo(User::class);
-  }
 
   public function personalRequests()
   {
     return $this->hasMany(PersonalRequest::class);
   }
 
-  public function requests()
+  public function applyRequests()
   {
-    return $this->hasMany(Request::class);
+    return $this->hasMany(ApplyRequest::class);
   }
 
   public function projects()

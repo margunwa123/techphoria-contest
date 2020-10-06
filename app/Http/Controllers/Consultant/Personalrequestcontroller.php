@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class PersonalRequestcontroller extends Controller
 {
+  private $mainDir = 'consultant.personal_request.';
+  private $mainRoute = 'consultant.personal_request.';
   /**
    * Display a listing of the resource.
    *
@@ -14,17 +16,6 @@ class PersonalRequestcontroller extends Controller
    */
   public function index()
   {
-    //
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-    //
+    return view($this->mainDir . 'index');
   }
 }

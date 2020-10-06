@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+  private $mainDir = 'consultant.';
+  private $mainRoute = 'consultant.';
   /**
    * Display a listing of the resource.
    *

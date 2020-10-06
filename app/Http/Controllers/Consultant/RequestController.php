@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class RequestController extends Controller
 {
+  private $mainDir = 'consultant.request.';
+  private $mainRoute = 'consultant.request.';
   /**
    * Display a listing of the resource.
    *
@@ -15,7 +17,7 @@ class RequestController extends Controller
    */
   public function index()
   {
-    //
+    return view($this->mainDir . 'index');
   }
 
   /**
@@ -26,7 +28,7 @@ class RequestController extends Controller
    */
   public function show(ModelsRequest $request)
   {
-    //
+    return view($this->mainDir . 'show', compact('request'));
   }
 
   /**
@@ -37,7 +39,7 @@ class RequestController extends Controller
    */
   public function accept(ModelsRequest $request)
   {
-    //
+    return redirect(route('consultant.apply_request.create', compact('request')));
   }
   public function reject(ModelsRequest $request)
   {

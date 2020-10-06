@@ -6,31 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRequestsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('requests', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("company_id");
-            $table->string("finance_type");
-            $table->text("description");
-            $table->unsignedBigInteger('fee');
-            $table->text('criteria');
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('requests', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId("company_id");
+      $table->string("finance_type");
+      $table->text("description");
+      $table->unsignedBigInteger('fee');
+      $table->text('criteria');
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('requests');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('requests');
+  }
 }

@@ -1,85 +1,108 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\PersonalRequest;
 use Illuminate\Http\Request;
 
 class PersonalRequestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  private $mainDir = 'client.request.';
+  private $mainRoute = 'client.request.';
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function __construct()
+  {
+    $this->middleware('auth');
+    $this->middleware('checkrole:client');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function validator(Request $personalRequest)
+  {
+    return $personalRequest->validate([
+      'consultant_id' => ['required', 'integer'],
+      'company_id' => ['required', 'integer'],
+      'finance_type' => ['required', 'max:50'],
+      'description' => ['required'],
+      'fee' => ['required', 'integer', 'min:0', 'max:1000000000000'],
+    ]);
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
+    return view($this->mainDir . 'create');
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $personalRequest
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
+    $data = $this->validator($request);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    $personalRequest = new PersonalRequest($data);
+    $personalRequest->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    return redirect(route($this->mainRoute . 'index'));
+  }
+
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function show(PersonalRequest $personalRequest)
+  {
+    return view($this->mainDir . 'show', compact('personalRequest'));
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function edit(PersonalRequest $personalRequest)
+  {
+    return view($this->mainDir . 'edit', compact('personalRequest'));
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $personalRequest
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, PersonalRequest $personalRequest)
+  {
+    $data = $this->validator($request);
+
+    $personalRequest->update($data);
+
+    return redirect(route($this->mainRoute . 'show', $personalRequest->id));
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy(PersonalRequest $personalRequest)
+  {
+    $company = $personalRequest->company;
+    $personalRequest->delete();
+
+    return redirect(route('client.company.show', $company->id));
+  }
 }

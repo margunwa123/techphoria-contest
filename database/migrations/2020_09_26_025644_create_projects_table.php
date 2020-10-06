@@ -6,31 +6,32 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProjectsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("consultant_id");
-            $table->foreignId("company_id");
-            $table->string("finance_type");
-            $table->unsignedBigInteger("fee");
-            $table->text("description");
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('projects', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId("consultant_id");
+      $table->foreignId("company_id");
+      $table->foreign("client_id")->references('id')->on('users');
+      $table->string("finance_type");
+      $table->unsignedBigInteger("fee");
+      $table->text("description");
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('projects');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('projects');
+  }
 }

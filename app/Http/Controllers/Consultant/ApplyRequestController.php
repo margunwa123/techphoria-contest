@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Consultant;
 
 use App\Http\Controllers\Controller;
-use App\Models\Client\Company;
+use App\Models\ApplyRequest;
+use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CompanyController extends Controller
+class ApplyRequestController extends Controller
 {
-  private $mainDir = 'client.company.';
-  private $mainRoute = 'client.company.';
+  private $mainDir = 'consultant.apply_request.';
+  private $mainRoute = 'consultant.apply_request.';
 
   public function validator(Request $request)
   {
     return $request->validate([
-      'name' => ['required', 'max:255'],
-      'city' => ['required', 'max:255'],
-      'found_date' => ['required', 'date'],
-      'description' => ['required'],
-      'company_field' => ['required', 'max:50'],
-      'phone' => ['required', 'max:31'],
+      'title' => ['required', 'max:255'],
+      'body' => ['required'],
+      'request_id' => ['required', 'int']
     ]);
   }
 
@@ -33,16 +31,6 @@ class CompanyController extends Controller
   {
     $companies = Auth::user()->companies;
     return view($this->mainDir . 'index', compact('companies'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    return view($this->mainDir . 'create');
   }
 
   /**
@@ -60,15 +48,9 @@ class CompanyController extends Controller
     return redirect(route($this->mainRoute . 'index'));
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Company $company)
+  public function create(Request $request, ModelsRequest $consultantRequest)
   {
-    return view($this->mainDir . 'show', compact('company'));
+    return view($this->mainDir . 'create');
   }
 
   /**
@@ -77,9 +59,9 @@ class CompanyController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit(Company $company)
+  public function edit(ApplyRequest $applyRequest)
   {
-    return view($this->mainDir . 'edit', compact('company'));
+    return view($this->mainDir . 'edit', compact('applyRequest'));
   }
 
   /**
@@ -89,14 +71,15 @@ class CompanyController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Company $company)
+  public function update(Request $request, ApplyRequest $applyRequest)
   {
     $data = $this->validator($request);
 
-    $company->update($data);
+    $applyRequest->update($data);
 
-    return redirect(route($this->mainRoute . 'show', $company->id));
+    return redirect(route($this->mainRoute . 'show', $applyRequest->id));
   }
+
 
   /**
    * Remove the specified resource from storage.
@@ -104,9 +87,9 @@ class CompanyController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Company $company)
+  public function destroy(ApplyRequest $applyRequest)
   {
-    $company->delete();
+    $applyRequest->delete();
 
     return redirect($this->mainDir . 'index');
   }

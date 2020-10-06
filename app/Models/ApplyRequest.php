@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Client\Company;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class ApplyRequest extends Model
 {
   use HasFactory;
 
-  public function company()
+  public function request()
   {
-    return $this->belongsTo(Company::class);
+    return $this->belongsTo(Request::class);
   }
 
   public function consultant()

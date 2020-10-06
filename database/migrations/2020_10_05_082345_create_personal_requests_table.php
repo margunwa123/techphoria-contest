@@ -6,31 +6,32 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePersonalRequestsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('personal_requests', function (Blueprint $table) {
-          $table->id();
-          $table->foreignId("consultant_id");
-          $table->foreignId("company_id");
-          $table->string("finance_type");
-          $table->text("description");
-          $table->unsignedBigInteger('fee');
-          $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('personal_requests', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId("consultant_id");
+      $table->foreignId("company_id");
+      $table->foreign("client_id")->references('id')->on('users');
+      $table->string("finance_type");
+      $table->text("description");
+      $table->unsignedBigInteger('fee');
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('personal_requests');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('personal_requests');
+  }
 }
