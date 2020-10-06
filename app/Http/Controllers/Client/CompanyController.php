@@ -28,6 +28,7 @@ class CompanyController extends Controller
   public function __construct()
   {
     $this->middleware('auth')->except(['show']);
+    $this->middleware('checkrole:client')->except('show');
   }
 
   /**
@@ -48,7 +49,16 @@ class CompanyController extends Controller
    */
   public function create()
   {
+    $this->authorize('create');
     return view($this->mainDir . 'create');
+  }
+
+  public function show(Company $company)
+  {
+    $requests = $company->requests;
+    $projects = $company->projects;
+    $completedProjects = $company->completedProjects;
+    return view($this->mainDir . 'show', compact('company', 'projects', 'completedProjects', 'requests'));
   }
 
   /**
@@ -59,6 +69,7 @@ class CompanyController extends Controller
    */
   public function store(Request $request)
   {
+    $this->authorize('create', Company::class);
     $data = $this->validator($request);
 
     Auth::user()->companies()->create($data);
@@ -75,6 +86,8 @@ class CompanyController extends Controller
    */
   public function update(Request $request, Company $company)
   {
+    $this->authorize('update', $company);
+
     $request["name"] = $company->name;
     $data = $this->validator($request);
     $company->update($data);

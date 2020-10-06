@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Client\Company;
 use App\Models\Request;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -16,9 +17,9 @@ class RequestPolicy
    * @param  \App\Models\User  $user
    * @return mixed
    */
-  public function create(User $user)
+  public function create(User $user, Company $company)
   {
-    return $user->role == "client";
+    return $user->id == $company->user_id;
   }
 
   /**
@@ -30,7 +31,7 @@ class RequestPolicy
    */
   public function update(User $user, Request $request)
   {
-    return $user->id == $request->company->user_id;
+    //
   }
 
   /**
@@ -42,7 +43,19 @@ class RequestPolicy
    */
   public function delete(User $user, Request $request)
   {
-    return $user->id == $request->company->user_id;
+    //
+  }
+
+  /**
+   * Determine whether the user can restore the model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\Request  $request
+   * @return mixed
+   */
+  public function restore(User $user, Request $request)
+  {
+    //
   }
 
   /**
@@ -54,6 +67,6 @@ class RequestPolicy
    */
   public function forceDelete(User $user, Request $request)
   {
-    return $user->id == $request->company->user_id;
+    //
   }
 }

@@ -1,6 +1,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
-
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;800&display=swap");
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
@@ -16,6 +16,8 @@
 @import "utilities/color";
 @import "utilities/hoverable";
 @import "utilities/border";
+@import "utilities/text";
+@import "utilities/gap";
 
 #wrapper {
   min-height: 100vh;

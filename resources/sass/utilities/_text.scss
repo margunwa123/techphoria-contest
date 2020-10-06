@@ -1,0 +1,33 @@
+@mixin text-size($base) {
+  font-size: $base;
+  @for $i from 1 through 3 {
+    &-#{$i} {
+      font-size: $base + (0.25 * $i);
+    }
+  }
+}
+
+.text-sm {
+  @include text-size(1rem);
+}
+
+.text-md {
+  @include text-size(2rem);
+}
+
+.text-lg {
+  @include text-size(3rem);
+}
+
+.text-tight {
+  line-height: 100%;
+}
+
+.letter-spaced {
+  letter-spacing: 2px;
+}
+
+.title {
+  font-family: $font-family-title;
+  font-weight: bold;
+}

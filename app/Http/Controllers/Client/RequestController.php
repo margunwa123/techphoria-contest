@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client\Company;
 use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,13 +16,18 @@ class RequestController extends Controller
   private function validator(Request $request)
   {
     return $request->validate([
-      ''
+      'company_id' => ['required'],
+      'finance_type' => ['required', 'max:255'],
+      'description' => ['required'],
+      'fee' => ['required', 'integer', 'min:0'],
+      'criteria' => ['required']
     ]);
   }
 
   public function __construct()
   {
-    $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
+    $this->middleware('auth')->except('show');
+    $this->middleware('checkrole:client')->except('show');
   }
 
   public function index()
@@ -43,7 +49,8 @@ class RequestController extends Controller
    */
   public function create()
   {
-    return view($this->mainDir . 'create');
+    $companies = auth()->user()->companies;
+    return view($this->mainDir . 'create', compact('companies'));
   }
 
   /**
@@ -54,8 +61,10 @@ class RequestController extends Controller
    */
   public function store(Request $request)
   {
-    $requests = ModelsRequest::where();
-    return redirect(route($this->mainRoute . 'show', compact('requests')));
+    $data = $this->validator($request);
+    $company = Company::find($data['company_id']);
+    $this->authorize('create', $company);
+    return redirect(route($this->mainRoute . 'show', compact('request')));
   }
 
   /**
