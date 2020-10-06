@@ -17169,6 +17169,35 @@ footer .title::before {
   color: #374454;
 }
 
+.hoverable {
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  /* Pre-render the bigger shadow, but hide it */
+  /* Transition to showing the bigger shadow on hover */
+}
+
+.hoverable::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hoverable:hover::after {
+  opacity: 1;
+}
+
+.border-50 {
+  border-radius: 50%;
+}
+
 .hero-container {
   height: 800px;
   background: linear-gradient(180deg, #a2fdd7 0%, rgba(250, 252, 255, 0) 100%);

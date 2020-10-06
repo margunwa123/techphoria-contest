@@ -31,9 +31,9 @@
       <hr class="bg-orange"/>
     </div>
   </footer>
-  
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
-  
-  @yield('footer')
 </footer>
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+
+@yield('footer')
