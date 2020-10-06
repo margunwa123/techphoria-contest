@@ -17,7 +17,7 @@ class CreateCompletedProjectsTable extends Migration
       $table->id();
       $table->foreignId("consultant_id");
       $table->foreignId("company_id");
-      $table->foreign("client_id")->references('id')->on('user');
+      $table->foreignId("client_id")->references('id')->on('users');
       $table->string("finance_type");
       $table->unsignedBigInteger("fee");
       $table->text("description");
