@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class CompletedProject extends Model
 {
   use HasFactory;
+  protected $guarded = [];
 
   public function company()
   {

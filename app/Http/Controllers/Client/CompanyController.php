@@ -14,10 +14,11 @@ class CompanyController extends Controller
 
   public function validator(Request $request)
   {
+    $date_now = date('Y-m-d');
     return $request->validate([
       'name' => ['required', 'max:255'],
       'city' => ['required', 'max:255'],
-      'found_date' => ['required', 'date'],
+      'found_date' => ['required', 'date', 'before:' . $date_now],
       'description' => ['required'],
       'company_field' => ['required', 'max:50'],
       'phone' => ['required', 'max:31'],
@@ -60,31 +61,9 @@ class CompanyController extends Controller
   {
     $data = $this->validator($request);
 
-    Auth::user()->companies->create($data);
+    Auth::user()->companies()->create($data);
 
     return redirect(route($this->mainRoute . 'index'));
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Company $company)
-  {
-    return view($this->mainDir . 'show', compact('company'));
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(Company $company)
-  {
-    return view($this->mainDir . 'edit', compact('company'));
   }
 
   /**
@@ -96,11 +75,11 @@ class CompanyController extends Controller
    */
   public function update(Request $request, Company $company)
   {
+    $request["name"] = $company->name;
     $data = $this->validator($request);
-
     $company->update($data);
 
-    return redirect(route($this->mainRoute . 'show', $company->id));
+    return redirect(route($this->mainRoute . 'index'));
   }
 
   /**
@@ -111,8 +90,10 @@ class CompanyController extends Controller
    */
   public function destroy(Company $company)
   {
+    $this->authorize('delete', $company);
+
     $company->delete();
 
-    return redirect($this->mainDir . 'index');
+    return redirect(route($this->mainRoute . 'index'));
   }
 }
