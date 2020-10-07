@@ -12,6 +12,20 @@ class User extends Authenticatable
 {
   use HasFactory, Notifiable;
 
+  public static function boot()
+  {
+    parent::boot();
+
+    static::created(function ($user) {
+      if ($user->role == "consultant") {
+        $user->consultant()->create([
+          'rating' => 0,
+          'finance_type' => 'perpajakan'
+        ]);
+      }
+    });
+  }
+
   /**
    * The attributes that are mass assignable.
    *

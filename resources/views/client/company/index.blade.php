@@ -30,12 +30,12 @@
           <form action="{{ route('client.company.update', $company->id) }}" method="POST" id="company-{{ $company->id }}">
             @csrf
             @method("PUT")
-            <p>Bidang : <input class="readonlyinput border-0" readonly name="company_field" value="{{ $company->company_field }}" id="company_field"> <br>
-              Telepon : <input class="readonlyinput border-0" readonly name="phone" value="{{ $company->phone }}" id="phone"> <br>
-              Kota : <input class="readonlyinput border-0" readonly name="city" value="{{ $company->city }}" id="city"> <br>
-              Didirikan pada : <input class="readonlyinput border-0" readonly name="found_date" value="{{ $company->found_date }}" id="found_date"> <br>
-              Deskripsi : <input class="readonlyinput border-0" readonly name="description" value="{{ $company->description }}" id="description"> <br>
-              Bidang Perusahaan : <input class="readonlyinput border-0" readonly name="company_field" value="{{ $company->company_field }}" id="company_field"> <br>
+            <p>Bidang : <input class="readonlyinput border-0 form-control" readonly name="company_field" value="{{ $company->company_field }}" id="company_field"> <br>
+              Telepon : <input class="readonlyinput border-0 form-control" readonly name="phone" value="{{ $company->phone }}" id="phone"> <br>
+              Kota : <input class="readonlyinput border-0 form-control" readonly name="city" value="{{ $company->city }}" id="city"> <br>
+              Didirikan pada : <input class="readonlyinput border-0 form-control" readonly name="found_date" value="{{ $company->found_date }}" id="found_date"> <br>
+              Deskripsi : <textarea class="readonlyinput border-0 form-control" readonly name="description" id="description">{{ $company->description }}</textarea><br>
+              Bidang Perusahaan : <input class="readonlyinput border-0 form-control" readonly name="company_field" value="{{ $company->company_field }}" id="company_field"> <br>
             </p>
             <div class="d-flex">
               <div id="edit-company-{{ $company->id }}">

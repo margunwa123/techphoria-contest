@@ -29,8 +29,8 @@ class ApplyRequestController extends Controller
    */
   public function index()
   {
-    $companies = Auth::user()->companies;
-    return view($this->mainDir . 'index', compact('companies'));
+    $applyRequests = ApplyRequest::where('consultant_id', Auth::user()->consultant->id)->get();
+    return view($this->mainDir . 'index', compact('applyRequests'));
   }
 
   /**
@@ -42,44 +42,12 @@ class ApplyRequestController extends Controller
   public function store(Request $request)
   {
     $data = $this->validator($request);
+    $data['consultant_id'] =  Auth::user()->consultant->id;
 
-    Auth::user()->companies->create($data);
-
+    $applyRequest = new ApplyRequest($data);
+    $applyRequest->save();
     return redirect(route($this->mainRoute . 'index'));
   }
-
-  public function create(Request $request, ModelsRequest $consultantRequest)
-  {
-    return view($this->mainDir . 'create');
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(ApplyRequest $applyRequest)
-  {
-    return view($this->mainDir . 'edit', compact('applyRequest'));
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, ApplyRequest $applyRequest)
-  {
-    $data = $this->validator($request);
-
-    $applyRequest->update($data);
-
-    return redirect(route($this->mainRoute . 'show', $applyRequest->id));
-  }
-
 
   /**
    * Remove the specified resource from storage.
@@ -89,8 +57,10 @@ class ApplyRequestController extends Controller
    */
   public function destroy(ApplyRequest $applyRequest)
   {
+    $this->authorize('delete', $applyRequest);
+
     $applyRequest->delete();
 
-    return redirect($this->mainDir . 'index');
+    return redirect(route($this->mainDir . 'index'));
   }
 }

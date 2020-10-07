@@ -17,7 +17,8 @@ class RequestController extends Controller
    */
   public function index()
   {
-    return view($this->mainDir . 'index');
+    $requests = ModelsRequest::all();
+    return view($this->mainDir . 'index', compact('requests'));
   }
 
   /**

@@ -27,7 +27,7 @@ Route::namespace($baseDir . '\Client')->name('client.')->group(function () {
   // Company
   Route::resource('company', 'CompanyController');
   // Consultant
-  Route::resource('consultant', 'ConsultantController')->only(['index', 'show']);
+  Route::resource('client/consultant', 'ConsultantController')->only(['index', 'show']);
   // Personal Request
   Route::resource('personal_request', 'PersonalRequestController')->except(['show', 'index']);
   // Profile
@@ -43,9 +43,9 @@ Route::namespace($baseDir . '\Consultant')->name('consultant.')->prefix('consult
   // Home
   Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
   // Personal Request
-  Route::resource('personal_request', 'PersonalRequestController')->only(['index']);
-  Route::post('personal_request/accept', 'PersonalRequestController@accept')->name('personal_request.accept');
-  Route::post('personal_request/reject', 'PersonalRequestController@reject')->name('personal_request.accept');
+  Route::resource('personal_request', 'PersonalRequestController')->only(['index'])->middleware('checkrole:consultant');
+  Route::post('personal_request/accept', 'PersonalRequestController@accept')->name('personal_request.accept')->middleware('checkrole:consultant');
+  Route::post('personal_request/reject', 'PersonalRequestController@reject')->name('personal_request.accept')->middleware('checkrole:consultant');
   // Profile
   Route::resource('profile', 'ProfileController')->only(['edit', 'update', 'show']);
   // Projects
@@ -55,7 +55,10 @@ Route::namespace($baseDir . '\Consultant')->name('consultant.')->prefix('consult
   Route::post('request/accept', 'RequestController@accept')->name('request.accept');
   Route::post('request/reject', 'RequestController@reject')->name('request.reject');
   // Apply Request
-  Route::resource('apply_request', 'ApplyRequestController');
+  Route::resource('apply_request', 'ApplyRequestController')->only(['index', 'store', 'destroy']);
+  // Finance type
+  Route::get('finance_type/edit', 'FinanceTypeController@edit')->name('finance_type.edit');
+  Route::put('finance_type', 'FinanceTypeController@update')->name('finance_type.update');
 });
 
 Auth::routes();

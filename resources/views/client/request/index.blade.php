@@ -20,9 +20,6 @@
     </div>
     @foreach ($company->requests as $request)
       <div class="col-md-12">
-        dsjaijdsaio
-      </div>
-      <div class="col-md-12">
         <div class="card card-body bg-primary text-white hoverable " data-toggle="collapse" href="#request-{{ $request->id }}" role="button" aria-expanded="false" aria-controls="request-{{ $request->id }}">
           <div class="d-flex justify-content-between">
             <div class="">
@@ -46,10 +43,10 @@
             <form action="{{ route('client.request.update', $request->id) }}" method="POST" id="request-{{ $request->id }}">
               @csrf
               @method("PUT")
-              <p>Jenis : <input class="readonlyinput border-0" readonly name="finance_type" value="{{ $request->finance_type }}" id="finance_type-{{$request->id}}"> <br>
-                Deskripsi : <input class="readonlyinput border-0" readonly name="description" value="{{ $request->description }}" id="description-{{$request->id}}"> <br>
-                Harga : <input class="readonlyinput border-0" readonly name="fee" value="{{ $request->fee }}" id="fee-{{$request->id}}"> <br>
-                Criteria : <input class="readonlyinput border-0" readonly name="criteria" value="{{ $request->criteria }}" id="criteria-{{$request->id}}">
+              <p>Jenis : <input class="readonlyinput border-0 form-control" readonly name="finance_type" value="{{ $request->finance_type }}" id="finance_type-{{$request->id}}"> <br>
+                Deskripsi : <input class="readonlyinput border-0 form-control" readonly name="description" value="{{ $request->description }}" id="description-{{$request->id}}"> <br>
+                Harga : <input class="readonlyinput border-0 form-control" readonly name="fee" value="{{ $request->fee }}" id="fee-{{$request->id}}"> <br>
+                Criteria : <input class="readonlyinput border-0 form-control" readonly name="criteria" value="{{ $request->criteria }}" id="criteria-{{$request->id}}">
                 <input type="hidden" name="company_id" value="{{ $company->id }}">
               </p>
               <div class="d-flex">

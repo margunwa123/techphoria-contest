@@ -39,6 +39,19 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('client.company.index') }}">Companies</a>
                   </li>
+                @else
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultant.personal_request.index') }}">Personal Request</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultant.request.index') }}">Requests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultant.project.index') }}">Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultant.apply_request.index') }}">Applied Requests</a>
+                  </li>
                 @endif
                   <li class="nav-item dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

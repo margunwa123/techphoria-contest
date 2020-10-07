@@ -10,6 +10,12 @@ class ProjectController extends Controller
 {
   private $mainDir = 'consultant.project.';
   private $mainRoute = 'consultant.project.';
+
+  public function __construct()
+  {
+    $this->middleware('auth');
+    $this->middleware('checkrole:consultant');
+  }
   /**
    * Display the specified resource.
    *

@@ -53,7 +53,7 @@
   </div>
 
   <div class="form-group row">
-    <label for="fee" class="col-md-4 col-form-label text-md-right">Budget <span class="text-red">*</span></label>
+    <label for="fee" class="col-md-4 col-form-label text-md-right">Budget (dalam rupiah) <span class="text-red">*</span></label>
 
     <div class="col-md-6">
         <input id="fee" type="number" min="0" class="form-control @error('fee') is-invalid @enderror" name="fee" value="{{ old('fee') }}" required autocomplete="fee" autofocus>
