@@ -43,7 +43,7 @@ class RequestPolicy
    */
   public function delete(User $user, Request $request)
   {
-    //
+    return $user->id == $request->company->user_id;
   }
 
   /**

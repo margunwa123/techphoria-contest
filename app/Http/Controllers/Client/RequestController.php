@@ -88,8 +88,8 @@ class RequestController extends Controller
    */
   public function destroy(ModelsRequest $request)
   {
-    $company = $request->company;
+    $this->authorize('delete', $request);
     $request->delete();
-    return redirect(route('client.company.show', $company->id));
+    return redirect(route('client.request.index'));
   }
 }
