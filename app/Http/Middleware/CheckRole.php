@@ -17,7 +17,7 @@ class CheckRole
    */
   public function handle(Request $request, Closure $next, $role)
   {
-    $user = $request->user;
+    $user = $request->user();
     if ($user->role != $role) {
       abort(403, 'User role does not match, your role is ' . $user->role . ' while the needed role is ' . $role);
     }

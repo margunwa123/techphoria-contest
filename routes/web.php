@@ -25,7 +25,7 @@ Route::namespace($baseDir . '\Client')->name('client.')->group(function () {
   // Home
   Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
   // Company
-  Route::resource('company', 'CompanyController')->except('show');
+  Route::resource('company', 'CompanyController');
   // Consultant
   Route::resource('consultant', 'ConsultantController')->only(['index', 'show']);
   // Personal Request
@@ -35,7 +35,7 @@ Route::namespace($baseDir . '\Client')->name('client.')->group(function () {
   // Projects
   Route::resource('project', 'ProjectController')->only(['destroy', 'index']);
   // Requests
-  Route::resource('request', 'RequestController');
+  Route::resource('request', 'RequestController')->except(['show', 'edit']);
 });
 
 // $ CONSULTANT

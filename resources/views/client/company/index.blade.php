@@ -8,7 +8,7 @@
 
 @section('page-items')
   @foreach ($companies as $company)
-    <div class="col-12 company">
+    <div class="col-12 company mb-3">
       <div data-toggle="collapse" href="#collapseExample{{ $loop->index }}" role="button" aria-expanded="false" aria-controls="collapseExample{{ $loop->index }}" class="card bg-main hoverable text-decoration-none">
         <div class="card-body text-white d-flex">
           <div class="">
@@ -37,13 +37,18 @@
               Deskripsi : <input class="readonlyinput border-0" readonly name="description" value="{{ $company->description }}" id="description"> <br>
               Bidang Perusahaan : <input class="readonlyinput border-0" readonly name="company_field" value="{{ $company->company_field }}" id="company_field"> <br>
             </p>
-            <div id="edit-company-{{ $company->id }}">
-              <a role="button" onclick="toggleEditCompany({{$company->id}})" id="edit-company-{{$company->id}}" class="btn btn-warning">Edit</a>
-            </div>
-            <div class="form-group" id="save-company-{{ $company->id }}" hidden>
-              <button type="submit" class="btn btn-primary" >
-                Save
-              </button>
+            <div class="d-flex">
+              <div id="edit-company-{{ $company->id }}">
+                <a role="button" onclick="toggleEditCompany({{$company->id}})" id="edit-company-{{$company->id}}" class="btn btn-warning">Edit</a>
+              </div>
+              <div class="form-group" id="save-company-{{ $company->id }}" hidden>
+                <button type="submit" class="btn btn-primary" >
+                  Save
+                </button>
+              </div>
+              <div class="ml-2">
+                <a href="{{route('client.company.show', $company->id)}}" class="btn btn-primary">View</a>
+              </div>
             </div>
           </form>
         </div>
