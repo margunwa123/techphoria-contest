@@ -20,6 +20,9 @@
     </div>
     @foreach ($company->requests as $request)
       <div class="col-md-12">
+        dsjaijdsaio
+      </div>
+      <div class="col-md-12">
         <div class="card card-body bg-primary text-white hoverable " data-toggle="collapse" href="#request-{{ $request->id }}" role="button" aria-expanded="false" aria-controls="request-{{ $request->id }}">
           <div class="d-flex justify-content-between">
             <div class="">
@@ -64,6 +67,11 @@
         </div>
       </div>
     @endforeach
+    @if (count($company->requests) == 0)
+    <div class="col-12">
+      <p class="text-muted font-italic">Perusahaan {{ $company->name }} belum memiliki permintaan jasa keuangan</p>
+    </div>
+    @endif
   @endforeach
   @if (count($companies) == 0)
     <div class="text-center col-12">

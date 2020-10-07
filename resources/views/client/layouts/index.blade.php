@@ -13,7 +13,7 @@
       @yield('page-subtitle')
     </div>
     <hr class="bg-orange"/>
-    <div class="row">
+    <div class="row mx-2">
       @yield('page-items')
     </div>
     @yield('others')
