@@ -55,7 +55,7 @@ Route::namespace($baseDir . '\Consultant')->name('consultant.')->prefix('consult
   Route::post('request/accept', 'RequestController@accept')->name('request.accept');
   Route::post('request/reject', 'RequestController@reject')->name('request.reject');
   // Apply Request
-  Route::resource('ApplyRequest', 'ApplyRequestController');
+  Route::resource('apply_request', 'ApplyRequestController');
 });
 
 Auth::routes();
