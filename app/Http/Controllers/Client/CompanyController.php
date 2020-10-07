@@ -49,16 +49,17 @@ class CompanyController extends Controller
    */
   public function create()
   {
-    $this->authorize('create');
+    $this->authorize('create', Company::class);
     return view($this->mainDir . 'create');
   }
 
   public function show(Company $company)
   {
     $requests = $company->requests;
+    $personalRequests = $company->personalRequests;
     $projects = $company->projects;
     $completedProjects = $company->completedProjects;
-    return view($this->mainDir . 'show', compact('company', 'projects', 'completedProjects', 'requests'));
+    return view($this->mainDir . 'show', compact('company', 'projects', 'completedProjects', 'requests', 'personalRequests'));
   }
 
   /**

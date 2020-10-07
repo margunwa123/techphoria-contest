@@ -82,30 +82,101 @@ Perusahaan {{ $company->name }}
   </div>
 </form>
 
-<section id="permintaan_konsultasi" class="mt-4">
-  <h2 class="title">Permintaan konsultasi yang anda ajukan : </h2>
-  @foreach ($requests as $request)
-    <div class="">
-      <hr class="bg-main">
-      <div class="col-md-3 col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h3>Request pertama</h3>
-            <p>Jenis finansial : Pajak</p>
-            <p>Diajukan pada : 2020-02-13</p>
-          </div>
+<section id="requests" class="mt-4">
+  <div class="card">
+    <div class="card-header">
+      <div class="d-flex">
+        <h2 class="title">Permintaan konsultasi yang anda ajukan : </h2>
+        <div class="ml-auto">
+          <a href="{{ route('client.request.create') }}" class="btn btn-primary ml-2">
+            Buat Permintaan Konsultasi
+          </a>
         </div>
       </div>
     </div>
-  @endforeach
-  @if(count($requests) == 0)
-    <p >
-      <span class="text-muted font-italic">Anda belum meminta jasa konsultasi, minta sekarang!</span>
-      <a href="{{ route('client.request.create') }}" class="btn btn-primary ml-2">
-        Buat Permintaan Konsultasi
-      </a>
-    </p>
-  @endif
+    <div class="card-body">
+      @foreach ($requests as $request)
+        <div class="">
+          <hr class="bg-main">
+          <div class="col-md-3 col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h3>Request pertama</h3>
+                <p>Jenis finansial : Pajak</p>
+                <p>Diajukan pada : 2020-02-13</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforeach
+      @if(count($requests) == 0)
+      <div>
+        <p >
+          <span class="text-muted font-italic">Anda belum meminta jasa konsultasi, minta sekarang!</span>
+        </p>
+      </div>
+      @endif
+      <div class="d-flex">
+        <p class="font-weight-bold">Permintaan konsultasi personal yang anda ajukan : </p>
+        <div class="ml-auto">
+          <a href="{{ route('client.consultant.index') }}" class="btn btn-secondary ml-2">
+            Telusuri Konsultan
+          </a>
+        </div>
+      </div>
+      @foreach ($personalRequests as $request)
+        <div class="">
+          <hr class="bg-main">
+          <div class="col-md-3 col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h3>Request pertama</h3>
+                <p>Jenis finansial : Pajak</p>
+                <p>Diajukan pada : 2020-02-13</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforeach
+      @if(count($personalRequests) == 0)
+        <p >
+          <span class="text-muted font-italic">Coba lihat lihat konsultan dengan ratingnya untuk mendapatkan konsultan yang sesuai</span>
+        </p>
+      @endif
+    </div>
+  </div>
+
+</section>
+
+<section id="projects" class="mt-4">
+  <div class="card">
+    <div class="card-header">
+      <div class="d-flex">
+        <h2 class="title">Proyek</h2>
+      </div>
+    </div>
+    <div class="card-body">
+      @foreach ($projects as $request)
+        <div class="">
+          <hr class="bg-main">
+          <div class="col-md-3 col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h3>Request pertama</h3>
+                <p>Jenis finansial : Pajak</p>
+                <p>Diajukan pada : 2020-02-13</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforeach
+      @if(count($projects) == 0)
+        <p >
+          <span class="text-muted font-italic">Belum ada permintaan anda yang diterima, harap menunggu</span>
+        </p>
+      @endif
+    </div>
+  </div>
 </section>
 
 @endsection

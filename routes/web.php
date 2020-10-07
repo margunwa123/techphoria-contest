@@ -35,7 +35,7 @@ Route::namespace($baseDir . '\Client')->name('client.')->group(function () {
   // Projects
   Route::resource('project', 'ProjectController')->only(['destroy', 'index']);
   // Requests
-  Route::resource('request', 'RequestController');
+  Route::resource('request', 'RequestController')->except(['show', 'edit']);
 });
 
 // $ CONSULTANT
