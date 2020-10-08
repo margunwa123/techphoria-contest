@@ -7,7 +7,7 @@ use App\Models\PersonalRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PersonalRequestcontroller extends Controller
+class PersonalRequestController extends Controller
 {
   private $mainDir = 'consultant.personal_request.';
   /**
@@ -23,7 +23,15 @@ class PersonalRequestcontroller extends Controller
 
   public function index()
   {
-    $personalRequests = PersonalRequest::where('user_id', Auth::id());
+    $personalRequests = PersonalRequest::where('consultant_id', Auth::user()->consultant->id)->get();
     return view($this->mainDir . 'index', compact('personalRequests'));
+  }
+
+  public function accept(Request $request, PersonalRequest $personalRequest)
+  {
+  }
+
+  public function reject(Request $request, PersonalRequest $personalRequest)
+  {
   }
 }
