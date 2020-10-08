@@ -31,7 +31,7 @@ class RequestPolicy
    */
   public function update(User $user, Request $request)
   {
-    return $request->company->user_id == $user->id;
+    return ($request->company->user_id == $user->id) && (count($request->appliedRequests) == 0);
   }
 
   /**

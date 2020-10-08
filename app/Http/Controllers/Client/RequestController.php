@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApplyRequest;
 use App\Models\Client\Company;
 use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
@@ -75,6 +76,10 @@ class RequestController extends Controller
   public function update(Request $serverrequest, ModelsRequest $request)
   {
     $this->authorize('update', $request);
+    $numberOfApplier = count($request->appliedRequests);
+    if ($numberOfApplier > 0) {
+      return redirect(route($this->mainRoute . 'index'))->withErrors("Konsultan", "Tidak bisa mengubah permintaan karena sudah ada konsultan yang tertarik dengan aplikasi anda");
+    }
     $data = $this->validator($serverrequest);
     $request->update($data);
     return redirect(route($this->mainRoute . 'index'));

@@ -15,7 +15,8 @@ class ConsultantController extends Controller
    */
   public function index()
   {
-    return view($this->mainDir . 'index');
+    $consultants = Consultant::all()->sortBy('rating');
+    return view($this->mainDir . 'index', compact('consultants'));
   }
 
   public function show(Consultant $consultant)
