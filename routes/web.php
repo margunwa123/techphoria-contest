@@ -53,6 +53,7 @@ Route::namespace($baseDir . '\Consultant')->name('consultant.')->prefix('consult
   Route::resource('profile', 'ProfileController')->only(['edit', 'update', 'show']);
   // Projects
   Route::resource('project', 'ProjectController')->only(['index', 'destroy']);
+  Route::post('project/{project}/cancel', 'ProjectController@cancel')->name('project.cancel');
   // Requests
   Route::resource('request', 'RequestController')->only(['index']);
   Route::post('request/accept', 'RequestController@accept')->name('request.accept');
@@ -62,6 +63,8 @@ Route::namespace($baseDir . '\Consultant')->name('consultant.')->prefix('consult
   // Finance type
   Route::get('finance_type/edit', 'FinanceTypeController@edit')->name('finance_type.edit');
   Route::put('finance_type', 'FinanceTypeController@update')->name('finance_type.update');
+  // Consultant Rating
+  Route::resource('consultant_rating', 'ConsultantRating')->only('update');
 });
 
 Auth::routes();

@@ -19,7 +19,7 @@ class ProjectPolicy
    */
   public function view(User $user, Project $project)
   {
-    return ($user->id == $project->client_id || $user->id == $project->consultant_id);
+    return ($user->id == $project->company->user_id || $user->id == $project->consultant_id);
   }
   /**
    * Determine whether the user can delete the model.
@@ -30,7 +30,7 @@ class ProjectPolicy
    */
   public function delete(User $user, Project $project)
   {
-    return ($user->id == $project->client_id || $user->id == $project->consultant_id);
+    return true;
   }
 
   /**

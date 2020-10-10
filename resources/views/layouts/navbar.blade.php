@@ -40,8 +40,12 @@
                     <a class="nav-link" href="{{ route('client.company.index') }}">Companies</a>
                   </li>
                 @else
+                {{-- If the user is consultant --}}
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('consultant.personal_request.index') }}">Personal Request</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultant.profile.show', Auth::user()->consultant->id) }}">Profile</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('consultant.request.index') }}">Requests</a>

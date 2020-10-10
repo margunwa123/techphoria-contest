@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Consultant;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompletedProject;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -22,9 +24,10 @@ class ProjectController extends Controller
    * @param  int  Project $project
    * @return \Illuminate\Http\Response
    */
-  public function index(Project $project)
+  public function index()
   {
-    return view($this->mainDir . 'index');
+    $projects = Project::where('consultant_id', Auth::user()->consultant->id)->get();
+    return view($this->mainDir . 'index', compact('projects'));
   }
 
   /**
@@ -35,7 +38,8 @@ class ProjectController extends Controller
    */
   public function show(Project $project)
   {
-    return view($this->mainDir . 'show');
+    $this->authorize('view', $project);
+    return view($this->mainDir . 'show', compact('project'));
   }
 
   /**
@@ -47,6 +51,16 @@ class ProjectController extends Controller
    */
   public function destroy(Project $project)
   {
+    $this->authorize('delete', $project);
+    $completedProject = new CompletedProject($project->toArray());
+    $completedProject->save();
+    $project->delete();
+    return redirect(route($this->mainRoute . 'index'));
+  }
+
+  public function cancel(Project $project)
+  {
+    $this->authorize('delete', $project);
     $project->delete();
     return redirect(route($this->mainRoute . 'index'));
   }

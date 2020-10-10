@@ -10,7 +10,7 @@ Perusahaan {{ $company->name }}
 <form action="{{route('client.company.destroy', $company->id )}}" method="post">
   @csrf
   @method('DELETE')
-  <button class=" btn btn-danger">
+  <button class=" btn btn-danger hoverable">
     <i class="fas fa-trash"></i>
     Delete
   </button>
@@ -150,22 +150,20 @@ Perusahaan {{ $company->name }}
 
 <section id="projects" class="mt-4">
   <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-primary text-white">
       <div class="d-flex">
         <h2 class="title">Proyek</h2>
       </div>
     </div>
     <div class="card-body">
-      @foreach ($projects as $request)
-        <div class="">
-          <hr class="bg-main">
-          <div class="col-md-3 col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h3>Request pertama</h3>
-                <p>Jenis finansial : Pajak</p>
-                <p>Diajukan pada : 2020-02-13</p>
-              </div>
+      <hr class="bg-main">
+      @foreach ($projects as $project)
+        <div class="col-md-3 col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h3>Konsultan {{ $project->consultant->user->name }}</h3>
+              <p>Jenis finansial : {{ $project->finance_type }}</p>
+              <p>Diajukan pada : {{ $project->created_at }}</p>
             </div>
           </div>
         </div>
@@ -178,6 +176,49 @@ Perusahaan {{ $company->name }}
     </div>
   </div>
 </section>
+
+@if (count($completedProjects) > 0)
+<section id="completed_projects" class="mt-4">
+  <div class="card">
+    <div class="card-header bg-red text-white">
+      <div class="d-flex">
+        <h2 class="title">Proyek Usai</h2>
+      </div>
+    </div>
+    <div class="card-body">
+      <hr class="bg-main">
+      @foreach ($completedProjects as $completedProject)
+          <div class="col-12 hoverable">
+            <div class="card">
+              <div class="card-body w-100">
+                <h3>Proyek dengan <a class="card-link" href="{{ route('consultant.profile.show', $completedProject->consultant->id) }}" target="_blank">{{ $completedProject->consultant->user->name }}</a></h3>
+                <p>Jenis finansial : {{ $completedProject->finance_type }}</p>
+                <p>Diajukan pada : {{ $completedProject->created_at }}</p>
+                <form action="{{ route('consultant.consultant_rating.update', $completedProject->consultantRating->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <div class="form-group">
+                    <label for=""></label>
+                  </div>
+                  <input type="number" name="rating" value="{{ $completedProject->consultantRating->rating }}">
+                  <textarea name="review">
+                    {{ $completedProject->consultantRating->review }}
+                  </textarea>
+                  <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      @endforeach
+      @if(count($projects) == 0)
+        <p >
+          <span class="text-muted font-italic">Belum ada permintaan anda yang diterima, harap menunggu</span>
+        </p>
+      @endif
+    </div>
+  </div>
+</section>
+@endif
 
 @endsection
 
