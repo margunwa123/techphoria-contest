@@ -51,3 +51,59 @@ footer {
     }
   }
 }
+
+// Client Profile
+
+.client-profile-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 4rem;
+
+  .left-content-container {
+    display: flex;
+    flex-direction: column;
+
+    .image-container {
+      border: solid 1px black;
+      img {
+        width: 17rem;
+        height: 17rem;
+      }
+    }
+    .btn {
+      margin-top: 2rem;
+    }
+  }
+
+  .right-content-container {
+    .username-job-container {
+      margin-bottom: 1.875rem;
+      .username-section {
+        font-size: 1.875rem;
+        font-weight: bold;
+      }
+      .job-section {
+        input {
+          font-size: 1.25rem;
+          color: $blue;
+          font-weight: bold;
+        }
+      }
+    }
+    .form-item {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      margin: 1rem 0;
+      
+      span {
+        font-weight: bold;
+      }
+      
+      .label {
+        width: 8rem;
+      }
+    }
+  }
+}

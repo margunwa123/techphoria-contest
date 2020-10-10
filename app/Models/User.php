@@ -45,6 +45,11 @@ class User extends Authenticatable
     return $this->role == "client";
   }
 
+  public function isConsultant()
+  {
+    return $this->role == "consultant";
+  }
+
   public function companies()
   {
     return $this->hasMany(Company::class);
