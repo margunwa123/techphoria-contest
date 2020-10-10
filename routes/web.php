@@ -31,7 +31,7 @@ Route::namespace($baseDir . '\Client')->name('client.')->group(function () {
   // Personal Request
   Route::resource('personal_request', 'PersonalRequestController')->except(['show', 'index']);
   // Profile
-  Route::resource('profile', 'ProfileController')->only(['edit', 'update', 'show']);
+  Route::resource('profile', 'ProfileController');
   // Projects
   Route::resource('project', 'ProjectController')->only(['destroy', 'index']);
   // Requests

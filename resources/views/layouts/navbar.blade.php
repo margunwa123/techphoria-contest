@@ -64,10 +64,15 @@
                                            document.getElementById('logout-form').submit();">
                               {{ __('Logout') }}
                           </a>
-
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                              @csrf
+                            @csrf
                           </form>
+                          @if (Auth::user()->isClient())
+                            <a href="{{ route('client.profile.show', Auth::id()) }}" class="dropdown-item">Profile</a>
+                          @endif
+                          @if (Auth::user()->isConsultant())
+                            <a href="{{ route('consultant.profile.show', Auth::id()) }}" class="dropdown-item">Profile</a>
+                            @endif
                       </div>
                   </li>
               @endguest
