@@ -7,7 +7,7 @@
       <div class="col-12 d-flex">
         <h1 class="title">@yield('page-title')</h1>
         <div class="ml-auto">
-          <a href="@yield('create-route')" class="btn btn-primary">Buat @yield('model-name')</a>
+          @yield('create-button')
         </div>
       </div>
       @yield('page-subtitle')

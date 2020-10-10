@@ -23,6 +23,15 @@ class ConsultantRatingController extends Controller
     $this->authorize('update', $consultantRating);
     $data = $this->validator($request);
     $consultantRating->update($data);
-    return redirect(route('client.project.index'));
+    $consultantRatings = ConsultantRating::where('consultant_id', $consultantRating->consultant_id)->get();
+    $sumRating = 0;
+    $numOfRatings = count($consultantRatings);
+    foreach ($consultantRatings as $rating) {
+      $sumRating += (int) $rating->rating;
+    }
+    $consultantRating->consultant->update([
+      'rating' => $sumRating / $numOfRatings
+    ]);
+    return redirect()->back();
   }
 }

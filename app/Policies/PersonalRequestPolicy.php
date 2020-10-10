@@ -55,7 +55,7 @@ class PersonalRequestPolicy
    */
   public function update(User $user, PersonalRequest $personalRequest)
   {
-    return $user->id == $personalRequest->client_id;
+    return $user->id == $personalRequest->company->user_id;
   }
 
   /**

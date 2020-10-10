@@ -6,7 +6,7 @@
 @endsection
 
 @section('page-content')
-  <form action="{{ route('client.profile.update', $user->id) }}" id="user-form" method="post">
+  <form action="{{ route('client.profile.update', $user->id) }}" id="user-form" method="POST">
     @csrf
     @method('PUT')
     <div class="client-profile-container">
@@ -14,10 +14,12 @@
         <div class="image-container">
           <img src="/asset/vinaid-logo.png" alt="">
         </div>
-        <div class="btn btn-warning edit-profile" id="edit-profile" onclick="toggleEditUser()"> Edit Profile </div>
-        <button type="submit" class="btn btn-primary" id="save-profile" hidden>
-          Save Profile
-        </button>
+        @can('update', $user)
+          <div class="btn btn-warning edit-profile" id="edit-profile" onclick="toggleEditUser()"> Edit Profile </div>
+          <button type="submit" class="btn btn-primary" id="save-profile" hidden>
+            Save Profile
+          </button>
+        @endcan
       </div>
       <div class="right-content-container">
         <div class="username-job-container">

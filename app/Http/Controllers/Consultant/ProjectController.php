@@ -27,7 +27,8 @@ class ProjectController extends Controller
   public function index()
   {
     $projects = Project::where('consultant_id', Auth::user()->consultant->id)->get();
-    return view($this->mainDir . 'index', compact('projects'));
+    $completedProjects = CompletedProject::where('consultant_id', Auth::user()->consultant->id)->get();
+    return view($this->mainDir . 'index', compact('projects', 'completedProjects'));
   }
 
   /**

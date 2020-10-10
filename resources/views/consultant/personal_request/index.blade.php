@@ -12,11 +12,11 @@
           <h1>Perusahaan {{ $personalRequest->company->name }}</h1>
         </div>
         <div class="ml-auto d-flex align-items-center">
-          <form action="{{ route('client.personalRequest.destroy', $personalRequest->id) }}" onsubmit="deletePersonalRequest" method="POST" id="delete-personalRequest-{{ $personalRequest->id }}">
+          <form action="/consultant/personal_request/{{$personalRequest->id}}/reject" onsubmit="deletePersonalRequest" method="POST" id="delete-personalRequest-{{ $personalRequest->id }}">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">
-              <i class="fas fa-trash"></i>
+              Tolak <i class="fas fa-trash"></i> 
             </button>
           </form>
         </div>
@@ -30,11 +30,9 @@
           <p>Budget : {{ $personalRequest->fee }}</p>
         </div>
         <div class="card-footer d-flex justify-content-center">
-          <form action="{{ route('consultant.personal_request.accept', $personalRequest->id) }}" method="post">
-            <button type="submit" class="btn btn-success border-50">Terima <i class="fas fa-check"></i></button>
-          </form>
-          <form action="{{ route('consultant.personal_request.reject', $personalRequest->id) }}" method="post">
-            <button type="submit" class="btn btn-success border-50">Terima <i class="fas fa-check"></i></button>
+          <form action="/consultant/personal_request/{{$personalRequest->id}}/accept" method="post">
+            @csrf
+            <button type="submit" class="btn btn-success mr-2">Terima <i class="fas fa-check"></i></button>
           </form>
         </div>
       </div>

@@ -2,7 +2,9 @@
 
 @section('page-title', 'Perusahaan anda')
 
-@section('create-route', route('client.company.create'))
+@section('create-button')
+<a href="{{ route('client.company.create') }}" class="btn btn-primary">Buat Perusahaan</a>
+@endsection
     
 @section('model-name', 'Perusahaan')
 

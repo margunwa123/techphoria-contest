@@ -31,19 +31,4 @@ class RequestController extends Controller
   {
     return view($this->mainDir . 'show', compact('request'));
   }
-
-  /**
-   * Accept a request
-   *
-   * @param  int  ModelsRequest $request
-   * @return \Illuminate\Http\Response
-   */
-  public function accept(ModelsRequest $request)
-  {
-    return redirect(route('consultant.apply_request.create', compact('request')));
-  }
-  public function reject(ModelsRequest $request)
-  {
-    //
-  }
 }

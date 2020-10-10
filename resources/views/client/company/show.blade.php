@@ -30,7 +30,7 @@ Perusahaan {{ $company->name }}
       Bidang : 
     </div>
     <div class="col-md-8">
-      <input class="readonlyinput border-0" readonly name="company_field" value="{{ $company->company_field }}" id="company_field">
+      <input class="readonlyinput form-control border-0" readonly name="company_field" value="{{ $company->company_field }}" id="company_field">
     </div>
   </div>
   <div class="row">
@@ -39,7 +39,7 @@ Perusahaan {{ $company->name }}
       Telepon : 
     </div>
     <div class="col-md-8">
-      <input class="readonlyinput border-0" readonly name="phone" value="{{ $company->phone }}" id="phone">
+      <input class="readonlyinput form-control border-0" readonly name="phone" value="{{ $company->phone }}" id="phone">
     </div>
   </div>
   <div class="row">
@@ -48,7 +48,7 @@ Perusahaan {{ $company->name }}
       Kota : 
     </div>
     <div class="col-md-8">
-      <input class="readonlyinput border-0" readonly name="city" value="{{ $company->city }}" id="city">
+      <input class="readonlyinput form-control border-0" readonly name="city" value="{{ $company->city }}" id="city">
     </div>
   </div>
   <div class="row">
@@ -57,7 +57,7 @@ Perusahaan {{ $company->name }}
       Didirikan pada : 
     </div>
     <div class="col-md-8">
-      <input class="readonlyinput border-0" readonly name="found_date" value="{{ $company->found_date }}" id="found_date">
+      <input class="readonlyinput form-control border-0" readonly name="found_date" value="{{ $company->found_date }}" id="found_date">
     </div>
   </div>
   <div class="row">
@@ -66,7 +66,7 @@ Perusahaan {{ $company->name }}
       Deskripsi : 
     </div>
     <div class="col-md-8">
-      <input class="readonlyinput border-0" readonly name="description" value="{{ $company->description }}" id="description">
+      <input class="readonlyinput form-control border-0" readonly name="description" value="{{ $company->description }}" id="description">
     </div>
   </div>
   
@@ -181,36 +181,40 @@ Perusahaan {{ $company->name }}
 <section id="completed_projects" class="mt-4">
   <div class="card">
     <div class="card-header bg-red text-white">
-      <div class="d-flex">
-        <h2 class="title">Proyek Usai</h2>
+      <div class="col-12 d-flex">
+        <h1 class="title">Proyek Usai</h1>
       </div>
     </div>
     <div class="card-body">
       <hr class="bg-main">
       @foreach ($completedProjects as $completedProject)
-          <div class="col-12 hoverable">
+          <div class="col-12 mt-3">
             <div class="card">
-              <div class="card-body w-100">
-                <h3>Proyek dengan <a class="card-link" href="{{ route('consultant.profile.show', $completedProject->consultant->id) }}" target="_blank">{{ $completedProject->consultant->user->name }}</a></h3>
+              <div class="card-body">
+                <h3>Proyek dengan <a class="card-link" href="{{ route('consultant.profile.show', $completedProject->consultant->user->id) }}" target="_blank">{{ $completedProject->consultant->user->name }}</a></h3>
                 <p>Jenis finansial : {{ $completedProject->finance_type }}</p>
                 <p>Diajukan pada : {{ $completedProject->created_at }}</p>
-                <form action="{{ route('consultant.consultant_rating.update', $completedProject->consultantRating->id) }}">
+                <form action="{{ route('consultant.consultant_rating.update', $completedProject->consultantRating->id) }}" method="POST">
                   @csrf
                   @method('PUT')
                   <div class="form-group">
-                    <label for=""></label>
+                    <label for="completed-{{ $completedProject->id }}-rating">Rating :</label>
+                    <input type="number" step="1" name="rating" readonly id="completed-{{ $completedProject->id }}-rating" value="{{ $completedProject->consultantRating->rating }}" class="form-control">
                   </div>
-                  <input type="number" name="rating" value="{{ $completedProject->consultantRating->rating }}">
-                  <textarea name="review">
-                    {{ $completedProject->consultantRating->review }}
-                  </textarea>
-                  <button class="btn btn-primary" type="submit">Submit</button>
+                  <div class="form-group">
+                    <label for="completed-{{ $completedProject->id }}-review">Review :</label>
+                    <textarea name="review" readonly class="form-control" id="completed-{{ $completedProject->id }}-review">{{ $completedProject->consultantRating->review }}</textarea>
+                  </div>
+                  <a class="btn btn-warning" role="button" onclick="editReview({{ $completedProject->id }})" id="{{$completedProject->id}}-edit">Edit</a>
+                  <input type="hidden" name="consultant_id" value="{{ $completedProject->consultant->id }}">
+                  <input type="hidden" name="completed_project_id" value="{{ $completedProject->id }}">
+                  <button class="btn btn-primary" type="submit" id="{{$completedProject->id}}-submit-edit" hidden>Submit</button>
                 </form>
               </div>
             </div>
           </div>
       @endforeach
-      @if(count($projects) == 0)
+      @if(count($completedProjects) == 0)
         <p >
           <span class="text-muted font-italic">Belum ada permintaan anda yang diterima, harap menunggu</span>
         </p>
@@ -256,6 +260,16 @@ Perusahaan {{ $company->name }}
       if(confirm(`You sure you want to delete this company?`)) {
         $(`#delete-company-${id}`).submit();
       }
+    }
+
+    function editReview(completedProjectId) {
+      console.log(completedProjectId);
+      $(`#completed-${completedProjectId}-rating`).prop('readonly', false);
+      $(`#completed-${completedProjectId}-rating`).prop('contenteditable', true);
+      $(`#completed-${completedProjectId}-review`).prop('readonly', false);
+      $(`#completed-${completedProjectId}-review`).prop('contenteditable', true);
+      $(`#${completedProjectId}-submit-edit`).prop('hidden', false);
+      $(`#${completedProjectId}-edit`).prop('hidden', true);
     }
   </script>
 @endsection

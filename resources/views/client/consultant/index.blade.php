@@ -25,7 +25,7 @@
             <p>Spesialisasi: {{ $consultant->finance_type }}</p>
           </div>
         </div>
-        <a href="{{ route('consultant.profile.show', $consultant->id) }}" class="btn btn-primary">view</a>
+        <a href="{{ route('consultant.profile.show', $consultant->user_id) }}" class="btn btn-primary">view</a>
       </div>
     </div>
   </div>

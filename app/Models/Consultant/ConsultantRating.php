@@ -22,7 +22,7 @@ class ConsultantRating extends Model
       $consultantRatings = ConsultantRating::where('consultant_id', $consultantRating->consultant_id)->get();
       $sumRating = 0;
       foreach ($consultantRatings as $rating) {
-        $sumRating += $rating->rating;
+        $sumRating += (int)$rating->rating;
       }
       $avgRating = $sumRating / count($consultantRatings);
       $consultantRating->consultant()->update([
