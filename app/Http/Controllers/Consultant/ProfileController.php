@@ -17,42 +17,26 @@ class ProfileController extends Controller
    * @param  int  User $user
    * @return \Illuminate\Http\Response
    */
-  public function show(User $user)
+  public function show($id)
   {
-    return view($this->mainDir . 'show');
+    $user = User::find($id);
+    return view($this->mainDir . 'show', compact('user'));
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  User $user
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(User $user)
+  public function update(Request $request, $id)
   {
-    //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  User $user
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, User $user)
-  {
-    $data = $request->validate([
-      'name' => ['required', 'string', 'max:255'],
-      'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-      'password' => ['required', 'string', 'min:8', 'confirmed'],
-      'username' => ['required', 'unique:users'],
-      'gender' => ['required', 'string'],
-      'age' => ['required', 'integer', 'min:0', 'max:100'],
-      'phone' => ['required', 'string'],
-      'job' => ['required', 'string'],
-    ]);
+    $user = User::find($id);
+    $data = [
+      "name" => $request['name'],
+      "email" => $request['email'],
+      "gender" => $request['gender'],
+      "age" => $user->age,
+      "phone" => $request['phone'],
+      "job" => $request['job'],
+      "rating" => $user->rating
+    ];
     $user->update($data);
+    return redirect('/');
 
     return redirect(route($this->mainRoute . 'index'));
   }
