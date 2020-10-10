@@ -37,7 +37,5 @@ class ProfileController extends Controller
     ];
     $user->update($data);
     return redirect('/');
-
-    return redirect(route($this->mainRoute . 'index'));
   }
 }
