@@ -9,8 +9,9 @@
 </div>
 @endsection
 
-@section('create-route', route('client.request.create'))
-    
+@section('create-button')
+<a href="{{ route('client.request.create') }}" class="btn btn-primary">Buat @yield('model-name')</a>
+@endsection
 @section('model-name', 'Permintaan Konsultasi')
 
 @section('page-items')

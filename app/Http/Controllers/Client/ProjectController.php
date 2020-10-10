@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompletedProject;
 use App\Models\Project;
 
 class ProjectController extends Controller
@@ -17,14 +18,14 @@ class ProjectController extends Controller
 
   public function index()
   {
-    $companies = auth()->user()->companies();
+    $companies = auth()->user()->companies;
     $projects = [];
     foreach ($companies as $company) {
       foreach ($company->projects as $project) {
         array_push($projects, $project);
       }
     }
-    return view($this->mainDir . 'index', compact('projects'));
+    return view($this->mainDir . 'index', compact('projects', 'companies'));
   }
 
   /**

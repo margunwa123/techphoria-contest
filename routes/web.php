@@ -29,9 +29,9 @@ Route::namespace($baseDir . '\Client')->name('client.')->group(function () {
   // Consultant
   Route::resource('client/consultant', 'ConsultantController')->only(['index', 'show']);
   // Personal Request
-  Route::resource('personal_request', 'PersonalRequestController')->except(['show', 'index']);
+  Route::resource('personal_request', 'PersonalRequestController')->only(['index', 'update', 'create', 'store', 'destroy']);
   // Profile
-  Route::resource('profile', 'ProfileController');
+  Route::resource('profile', 'ProfileController')->only(['show', 'update']);
   // Projects
   Route::resource('project', 'ProjectController')->only(['destroy', 'index']);
   // Requests
@@ -47,24 +47,22 @@ Route::namespace($baseDir . '\Consultant')->name('consultant.')->prefix('consult
   Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
   // Personal Request
   Route::resource('personal_request', 'PersonalRequestController')->only(['index']);
-  Route::post('personal_request/accept', 'PersonalRequestController@accept')->name('personal_request.accept');
-  Route::post('personal_request/reject', 'PersonalRequestController@reject')->name('personal_request.reject');
+  Route::post('personal_request/{personalRequest}/accept', 'PersonalRequestController@accept')->name('personal_request.accept');
+  Route::delete('personal_request/{personalRequest}/reject', 'PersonalRequestController@reject')->name('personal_request.reject');
   // Profile
-  Route::resource('profile', 'ProfileController')->only(['edit', 'update', 'show']);
+  Route::resource('profile', 'ProfileController')->only(['show', 'update']);
   // Projects
   Route::resource('project', 'ProjectController')->only(['index', 'destroy']);
   Route::post('project/{project}/cancel', 'ProjectController@cancel')->name('project.cancel');
   // Requests
   Route::resource('request', 'RequestController')->only(['index']);
-  Route::post('request/accept', 'RequestController@accept')->name('request.accept');
-  Route::post('request/reject', 'RequestController@reject')->name('request.reject');
   // Apply Request
   Route::resource('apply_request', 'ApplyRequestController')->only(['index', 'store', 'destroy']);
   // Finance type
   Route::get('finance_type/edit', 'FinanceTypeController@edit')->name('finance_type.edit');
   Route::put('finance_type', 'FinanceTypeController@update')->name('finance_type.update');
   // Consultant Rating
-  Route::resource('consultant_rating', 'ConsultantRating')->only('update');
+  Route::resource('consultant_rating', 'ConsultantRatingController')->only('update');
 });
 
 Auth::routes();

@@ -45,7 +45,7 @@
 @endforeach
 @if (count($applyRequests) == 0)
 <div class="text-center col-12">
-  <span class="font-italic text-muted">Kamu belum membuat perusahaan, buat sekarang!</span>
+  <span class="font-italic text-muted">Bila permintaan anda yang sebelumnya ada menjadi tidak ada, silahkan lihat laman <a href="{{ route('consultant.project.index')}}" class="btn btn-secondary">Proyek</a></span>
 </div>
 @endif
 @endsection

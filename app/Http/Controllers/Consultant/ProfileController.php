@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -20,7 +21,15 @@ class ProfileController extends Controller
   public function show($id)
   {
     $user = User::find($id);
-    return view($this->mainDir . 'show', compact('user'));
+    if ($user->role == "client") {
+      return redirect('/');
+    }
+    $completedProjects = $user->consultant->completedProjects;
+    $reviews = [];
+    foreach ($completedProjects as $completedProject) {
+      array_push($reviews, $completedProject->consultantRating);
+    }
+    return view($this->mainDir . 'show', compact('user', 'reviews'));
   }
 
   public function update(Request $request, $id)
@@ -29,13 +38,11 @@ class ProfileController extends Controller
     $data = [
       "name" => $request['name'],
       "email" => $request['email'],
-      "gender" => $request['gender'],
       "age" => $user->age,
       "phone" => $request['phone'],
-      "job" => $request['job'],
-      "rating" => $user->rating
+      "job" => $request['job']
     ];
     $user->update($data);
-    return redirect('/');
+    return redirect()->back();
   }
 }

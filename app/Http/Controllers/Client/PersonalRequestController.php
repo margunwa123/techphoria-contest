@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Consultant;
 use App\Models\PersonalRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PersonalRequestController extends Controller
 {
-  private $mainDir = 'client.request.';
-  private $mainRoute = 'client.request.';
+  private $mainDir = 'client.personal_request.';
+  private $mainRoute = 'client.personal_request.';
 
   public function __construct()
   {
@@ -28,14 +31,23 @@ class PersonalRequestController extends Controller
     ]);
   }
 
+  public function index()
+  {
+    $companies = Auth::user()->companies;
+    return view($this->mainDir . 'index', compact('companies'));
+  }
+
   /**
    * Show the form for creating a new resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
+  public function create(Request $request)
   {
-    return view($this->mainDir . 'create');
+    $this->authorize('create', PersonalRequest::class);
+    $consultant = Consultant::find($request->get('consultant'));
+    $companies = $request->user()->companies;
+    return view($this->mainDir . 'create', compact('consultant', 'companies'));
   }
 
   /**
@@ -46,34 +58,13 @@ class PersonalRequestController extends Controller
    */
   public function store(Request $request)
   {
+    $this->authorize('create', PersonalRequest::class);
     $data = $this->validator($request);
 
     $personalRequest = new PersonalRequest($data);
     $personalRequest->save();
 
     return redirect(route($this->mainRoute . 'index'));
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show(PersonalRequest $personalRequest)
-  {
-    return view($this->mainDir . 'show', compact('personalRequest'));
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(PersonalRequest $personalRequest)
-  {
-    return view($this->mainDir . 'edit', compact('personalRequest'));
   }
 
   /**
@@ -85,11 +76,12 @@ class PersonalRequestController extends Controller
    */
   public function update(Request $request, PersonalRequest $personalRequest)
   {
+    $this->authorize('update', $personalRequest);
     $data = $this->validator($request);
 
     $personalRequest->update($data);
 
-    return redirect(route($this->mainRoute . 'show', $personalRequest->id));
+    return redirect(route($this->mainRoute . 'index', $personalRequest->id));
   }
 
   /**
@@ -100,6 +92,7 @@ class PersonalRequestController extends Controller
    */
   public function destroy(PersonalRequest $personalRequest)
   {
+    $this->authorize('destroy', $personalRequest);
     $company = $personalRequest->company;
     $personalRequest->delete();
 
