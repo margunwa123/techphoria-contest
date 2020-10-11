@@ -1,13 +1,18 @@
+# Kelompok SPARTA
+
+![](https://www.myinstants.com/media/instants_images/sparta.gif)
 
 ### How to Run:
 
 To run this project you will need:
+
 - [PHP7](https://www.php.net/manual/en/install.php)
 - [Sql Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - [Php Composer](https://getcomposer.org/)
 - [Yarn package manager](https://classic.yarnpkg.com/en/docs/install)
 
 Assume you already installed all of the dependencies (php, sql ...), Follow this instructions:
+
 1. Duplicate `.env.create` and rename it as `.env`
 2. Edit `.env` in database connection section, make sure your config is applied on your sql server (Username and pass for sql)
 3. Open Terminal or CMD
@@ -17,7 +22,6 @@ Assume you already installed all of the dependencies (php, sql ...), Follow this
 7. Type `php -S localhost:8000 -t public` to run php server
 8. open localhost:8000 in your browser
 9. Enjoy..~
-
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
