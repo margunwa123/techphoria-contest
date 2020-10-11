@@ -13,9 +13,10 @@ Assume you already installed all of the dependencies (php, sql ...), Follow this
 4. Type `composer install` on your terminal
 5. Type `yarn install` on your terminal
 6. Type `yarn watch` to run the scss compiler
-7. Type `php -S localhost:8000 -t public` to run php server
-8. open localhost:8000 in your browser
-9. Enjoy..~
+7. Type `php artisan migrate` to migrate php database
+8. Type `php -S localhost:8000 -t public` to run php server
+9. open localhost:8000 in your browser
+10. Enjoy..~
 
 
 
