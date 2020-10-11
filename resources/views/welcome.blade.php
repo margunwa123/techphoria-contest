@@ -42,14 +42,14 @@
                 </div>
                 <div class="col d-flex flex-column align-items-center aid-col">
                     <img class="aid-logo p-3" src="{{URL::asset("asset/landing/nego.png")}}" />
-                    <h3 class="text-darkgreen p-4 font-weight-bolder">Cepat</h3>
+                    <h3 class="text-darkgreen p-4 font-weight-bolder">Murah</h3>
                     <p class="text-center text-sm px-5">Harga bisa dinegosiasikan dengan antara konsultan dengan klien sehingga kedua belah pihak dapat diuntungkan
                     </p>
                 </div>
                 <div class="col d-flex flex-column align-items-center aid-col">
                     <img class="aid-logo p-2" src="{{URL::asset("asset/landing/praktis.png")}}" />
                     <h3 class="text-darkgreen p-4 font-weight-bolder">Praktis</h3>
-                    <p class="text-center text-sm px-5">Ada berbagai paket dan pilihan yang telah kami sediakan bagi anda, anda cukup befrokus dengan konsultan anda
+                    <p class="text-center text-sm px-5">Anda bisa memilih konsultan sendiri atau buat permintaan dan menunggu konsultan hadir kepada anda, praktis bukan?
                     </p>
                 </div>
             </div>

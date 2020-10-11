@@ -23,7 +23,7 @@
               <h3>
                 Konsultasi {{ $personalRequest->finance_type }}
               </h3>
-              <span class="mr-2 font-italic">Kepada: Konsultan {{ $personalRequest->consultant->name }}</span>
+              <span class="mr-2 font-italic">Kepada: Konsultan {{ $personalRequest->consultant->user->name }}</span>
             </div>
             <div class="">
               <form action="{{ route('client.personal_request.destroy', $personalRequest->id) }}" onsubmit="deleteRequest" method="POST" id="delete-request-{{ $personalRequest->id }}">
@@ -45,7 +45,7 @@
             @endcan
 
               <p>
-                Kepada : <input class="readonlyinput border-0 form-control" readonly name="consultant_name" value="Konsultan {{ $personalRequest->consultant->name }}"><br>
+                Kepada : <input class="border-0 form-control" readonly name="consultant_name" value="Konsultan {{ $personalRequest->consultant->user->name }}"><br>
                 <input name="consultant_id" value="{{ $personalRequest->consultant->id }}" type="hidden">
                 Jenis : <input class="readonlyinput border-0 form-control" readonly name="finance_type" value="{{ $personalRequest->finance_type }}" id="finance_type-{{$personalRequest->id}}"> <br>
                 Deskripsi : <input class="readonlyinput border-0 form-control" readonly name="description" value="{{ $personalRequest->description }}" id="description-{{$personalRequest->id}}"> <br>

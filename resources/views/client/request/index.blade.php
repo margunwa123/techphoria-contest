@@ -83,7 +83,7 @@
                         <p><b>Title </b> : {{ $appliedRequest->title }}</p>
                         <p><b>Alasan tertarik </b> : {{ $appliedRequest->body }}</p>
                         <div class="col-12 align-items-end justify-content-end d-flex">
-                          <a target="_blank" href="{{ route('consultant.profile.show', $appliedRequest->consultant->id) }}" class="btn btn-primary mr-2">Lihat profil</a>
+                          <a target="_blank" href="{{ route('consultant.profile.show', $appliedRequest->consultant->user->id) }}" class="btn btn-primary mr-2">Lihat profil</a>
                           <button class="btn btn-success mr-3" onclick="acceptConsultant({{$appliedRequest->id}})">Accept <i class="fas fa-check"></i></button>
                           <button class="btn btn-danger" onclick="rejectConsultant({{$appliedRequest->id}})">Reject <i class="fas fa-times"></i></button>
                         </div>
