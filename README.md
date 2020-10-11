@@ -1,3 +1,28 @@
+### How to Run:
+
+To run this project you will need:
+- [PHP7](https://www.php.net/manual/en/install.php)
+- [Sql Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [Php Composer](https://getcomposer.org/)
+- [Yarn package manager](https://classic.yarnpkg.com/en/docs/install)
+
+Assume you already installed all of the dependencies (php, sql ...), Follow this instructions:
+1. Duplicate `.env.create` and rename it as `.env`
+2. Edit `.env` in database connection section, make sure your config is applied on your sql server (Username and pass for sql)
+3. Open Terminal or CMD
+4. Type `composer install` on your terminal
+5. Type `yarn install` on your terminal
+6. Type `yarn watch` to run the scss compiler
+7. Type `php -S localhost:8000 -t public` to run php server
+8. open localhost:8000 in your browser
+9. Enjoy..~
+
+
+
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
