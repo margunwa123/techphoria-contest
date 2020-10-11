@@ -1,0 +1,23 @@
+.hoverable {
+  position: relative;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  /* Pre-render the bigger shadow, but hide it */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Transition to showing the bigger shadow on hover */
+  &:hover::after {
+    opacity: 1;
+  }
+}

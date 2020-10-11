@@ -1,100 +1,93 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
+<div class="hero-container">
+    <div class="container position-relative h-100">
+        <img class="hero-logo" src="{{URL::asset("asset/vinaid-text.svg")}}" />
+        <h1 class="hero-text">
+            Platform yang mempertemukan konsultan keuangan dengan perusahaan
+        </h1>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <img class="hero-bars" src="{{URL::asset("asset/landing/hero-bars.svg")}}" />
+    </div>
+</div>
+<div class="aid-container">
+    <div class="container">
+        <div class="about row">
+            <div class="col-4">
+                <img class="about-logo" src="{{URL::asset("asset/vinaid-logo.png")}}" />
+            </div>
+            <div class="col-8 about-text">
+                <h1 class="text-darkblue font-weight-bolder">
+                    What are we?
+                </h1>
+                <h5 class="about-desc">
+                    VinAid adalah sebuah platform untuk mempertemukan para financial aid consultant dengan start up companies yang sedang mencari bantuan finansial. Dengan Vinaid, baik konsultan maupun perusahaan tidak perlu dengan sulit saling mencari.
+                </h5>
+                <div class="btn btn-primary btn-lg about-btn">
+                    <h4> Kenali lebih lanjut </h4>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <div class="row pb-lg-5">
+            <h1 class="text-darkblue font-weight-bold mx-auto text-center my-10">
+                Financial Aid
+            </h1>
+            <div class="row">
+                <div class="col d-flex flex-column align-items-center aid-col">
+                    <img class="aid-logo" src="{{URL::asset("asset/landing/cepat.png")}}" />
+                    <h3 class="text-darkgreen p-4 font-weight-bolder">Cepat</h3>
+                    <p class="text-center text-sm px-5">Kita semua tahu hal terpenting dalam bisnis adalah waktu. Jangan buang buang waktu anda mencari konsultan yang terpercaya saat anda bisa mendapatkannya lewat VinAid
+                    </p>
+                </div>
+                <div class="col d-flex flex-column align-items-center aid-col">
+                    <img class="aid-logo p-3" src="{{URL::asset("asset/landing/nego.png")}}" />
+                    <h3 class="text-darkgreen p-4 font-weight-bolder">Murah</h3>
+                    <p class="text-center text-sm px-5">Harga bisa dinegosiasikan dengan antara konsultan dengan klien sehingga kedua belah pihak dapat diuntungkan
+                    </p>
+                </div>
+                <div class="col d-flex flex-column align-items-center aid-col">
+                    <img class="aid-logo p-2" src="{{URL::asset("asset/landing/praktis.png")}}" />
+                    <h3 class="text-darkgreen p-4 font-weight-bolder">Praktis</h3>
+                    <p class="text-center text-sm px-5">Anda bisa memilih konsultan sendiri atau buat permintaan dan menunggu konsultan hadir kepada anda, praktis bukan?
+                    </p>
+                </div>
+            </div>
+        </div>
+        @if (is_null(Auth::user()) ? true :  Auth::user()->role == "client")
+          <div class="aid-card-container   background-color-red">
+              <div class="left-content-container">
+                  <img src="{{ URL::asset("asset/card-img1.png") }}">
+              </div>
+              <div class="right-content-container ">
+                  <h2>Let’s start by building your own company profile</h2>
+                  <p>Join our community to start getting support from our professionals</p>
+                  <div class="btn btn-primary btn-lg about-btn">
+                      <a href="{{ route('client.company.create') }}">
+                          Get Started
+                      </a>
+                  </div>
+              </div>
+          </div>
+        @endif
+        @if (is_null(Auth::user()) ? true :  Auth::user()->role == "consultant")
+          <div class="aid-card-container background-color-blue">
+              <div class="left-content-container">
+                  <h2>We make it easy for consultant to find projects</h2>
+                  <p>Your hardwork, projects, and rating will promote yourself to the top page</p>
+                  <div class="btn-container">
+                      <div class="btn btn-primary btn-lg about-btn">
+                          <a href="/register">
+                              Join Our Community
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <div class="right-content-container">
+                  <img src="{{ URL::asset("asset/card-img2.png") }}">
+              </div>
+          </div>            
+        @endif
+    </div>
+</div>
+@endsection

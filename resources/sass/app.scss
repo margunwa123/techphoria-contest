@@ -1,1 +1,185 @@
-//
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;800&display=swap");
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+// Variables
+@import "variables";
+
+// Utilities
+@import "utilities/color";
+@import "utilities/hoverable";
+@import "utilities/border";
+@import "utilities/text";
+@import "utilities/gap";
+
+// components
+@import "components/navbar";
+// > Pages
+// 1> Landing
+@import "blocks/landing/landing";
+
+#wrapper {
+  min-height: 100vh;
+  #content {
+    padding-top: 70px;
+    padding-bottom: $footer-height + 10px;
+  }
+}
+
+footer {
+  height: $footer-height;
+  margin-top: -$footer-height;
+  background-color: black;
+  color: white;
+
+  .title {
+    &::before {
+      content: "|\00a0";
+      width: 2px;
+      @extend .text-orange;
+    }
+  }
+}
+
+// Client Profile
+
+.client-profile-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 4rem;
+
+  .left-content-container {
+    display: flex;
+    flex-direction: column;
+
+    .image-container {
+      border: solid 1px black;
+      img {
+        width: 17rem;
+        height: 17rem;
+      }
+    }
+    .btn {
+      margin-top: 2rem;
+    }
+  }
+
+  .right-content-container {
+    .username-job-container {
+      margin-bottom: 1.875rem;
+      .username-section {
+        font-size: 1.875rem;
+        font-weight: bold;
+      }
+      .job-section {
+        input {
+          font-size: 1.25rem;
+          color: $blue;
+          font-weight: bold;
+        }
+      }
+    }
+    .form-item {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      margin: 1rem 0;
+
+      span {
+        font-weight: bold;
+      }
+
+      .label {
+        width: 8rem;
+      }
+    }
+  }
+}
+
+// Welcome Page
+
+.aid-card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: center;
+  padding: 1.5rem 0;
+  margin: 1.5rem 0;
+  border-radius: 0.75rem;
+  margin-bottom: 4rem;
+
+  &.background-color-red {
+    background: radial-gradient(
+      101.17% 387.26% at 21.16% 2.42%,
+      rgba(245, 48, 60, 0.93) 0%,
+      #ce172d 100%
+    );
+  }
+
+  &.background-color-blue {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      radial-gradient(49.05% 135.38% at 86.04% 0%, #3a8ef1 1.22%, #1759d8 100%);
+  }
+
+  .left-content-container {
+    height: 20rem;
+    img {
+      height: 100%;
+    }
+    h2 {
+      color: white;
+      font-weight: bold;
+    }
+    p {
+      color: white;
+      font-size: 1.25rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      border-radius: 2rem;
+      &.btn-primary {
+        background-color: #ce172d !important;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+  .right-content-container {
+    height: 20rem;
+    img {
+      height: 100%;
+    }
+    h2 {
+      color: white;
+      font-weight: bold;
+    }
+    p {
+      color: white;
+      font-size: 1.25rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      border-radius: 2rem;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
