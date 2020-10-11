@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
   <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}">
          <img src="{{URL::asset('asset/vinaid-text.svg')}}" style="height:40px" />
@@ -28,6 +28,9 @@
               @else
                 @if (Auth::user()->isClient())
                   <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.home') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('client.consultant.index') }}">Consultants</a>
                   </li>
                   <li class="nav-item">
@@ -44,6 +47,9 @@
                   </li>
                 @else
                 {{-- If the user is consultant --}}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultant.home') }}">Home</a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('consultant.personal_request.index') }}">Personal Request</a>
                   </li>

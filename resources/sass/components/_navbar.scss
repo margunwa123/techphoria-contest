@@ -1,0 +1,13 @@
+.navbar {
+  .nav-item {
+    background-color: #dddddd;
+    transition: background-color 0.2s ease-in-out;
+    @extend .px-1;
+    margin: 0 2px;
+    @extend .rounded-pill;
+    &:hover {
+      opacity: 1;
+      background-color: #cccccc;
+    }
+  }
+}

@@ -23,6 +23,27 @@
   line-height: 100%;
 }
 
+.list-spacing {
+  list-style: none;
+  counter-reset: li;
+  li::before {
+    @extend .border-50;
+    $bullet-size: 2.5rem;
+    content: counter(li);
+    color: white;
+    background-color: $blue;
+    margin-right: 10px;
+    display: inline-block;
+    width: $bullet-size;
+    height: $bullet-size;
+    text-align: center;
+  }
+  li {
+    counter-increment: li;
+    margin: 20px 0;
+  }
+}
+
 .letter-spaced {
   letter-spacing: 2px;
 }

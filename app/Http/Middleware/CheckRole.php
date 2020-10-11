@@ -19,7 +19,11 @@ class CheckRole
   {
     $user = $request->user();
     if ($user->role != $role) {
-      abort(403, 'User role does not match, your role is ' . $user->role . ' while the needed role is ' . $role);
+      if ($user->role == "client") {
+        return redirect(route('client.home'));
+      } else {
+        return redirect(route('consultant.home'));
+      }
     }
     return $next($request);
   }

@@ -54,36 +54,40 @@
                 </div>
             </div>
         </div>
-        <div class="aid-card-container   background-color-red">
-            <div class="left-content-container">
-                <img src="{{ URL::asset("asset/card-img1.png") }}">
-            </div>
-            <div class="right-content-container ">
-                <h2>Let’s start by building your own company profile</h2>
-                <p>Join our community to start getting support from our professionals</p>
-                <div class="btn btn-primary btn-lg about-btn">
-                    <a href="{{ route('client.company.create') }}">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="aid-card-container background-color-blue">
-            <div class="left-content-container">
-                <h2>We make it easy for consultant to find projects</h2>
-                <p>Your hardwork, projects, and rating will promote yourself to the top page</p>
-                <div class="btn-container">
-                    <div class="btn btn-primary btn-lg about-btn">
-                        <a href="/register">
-                            Join Our Community
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="right-content-container">
-                <img src="{{ URL::asset("asset/card-img2.png") }}">
-            </div>
-        </div>
+        @if (is_null(Auth::user()) ? true :  Auth::user()->role == "client")
+          <div class="aid-card-container   background-color-red">
+              <div class="left-content-container">
+                  <img src="{{ URL::asset("asset/card-img1.png") }}">
+              </div>
+              <div class="right-content-container ">
+                  <h2>Let’s start by building your own company profile</h2>
+                  <p>Join our community to start getting support from our professionals</p>
+                  <div class="btn btn-primary btn-lg about-btn">
+                      <a href="{{ route('client.company.create') }}">
+                          Get Started
+                      </a>
+                  </div>
+              </div>
+          </div>
+        @endif
+        @if (is_null(Auth::user()) ? true :  Auth::user()->role == "consultant")
+          <div class="aid-card-container background-color-blue">
+              <div class="left-content-container">
+                  <h2>We make it easy for consultant to find projects</h2>
+                  <p>Your hardwork, projects, and rating will promote yourself to the top page</p>
+                  <div class="btn-container">
+                      <div class="btn btn-primary btn-lg about-btn">
+                          <a href="/register">
+                              Join Our Community
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <div class="right-content-container">
+                  <img src="{{ URL::asset("asset/card-img2.png") }}">
+              </div>
+          </div>            
+        @endif
     </div>
 </div>
 @endsection
