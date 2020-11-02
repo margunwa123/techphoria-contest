@@ -23,6 +23,21 @@ class CompletedProject extends Model
         'review' => 'reccomended',
         'consultant_id' => $completedProject->consultant_id
       ]);
+
+      $notificationConsultant = new Notification([
+        'title' => "Completed project!",
+        'body' => 'A project has been completed with company ' . $completedProject->company->name,
+        'read' => False,
+        'user_id' => $completedProject->consultant->user_id
+      ]);
+      $notificationClient = new Notification([
+        'title' => "Completed project!",
+        'body' => 'A project has been completed with company ' . $completedProject->company->name,
+        'read' => False,
+        'user_id' => $completedProject->company->user_id
+      ]);
+      $notificationConsultant->save();
+      $notificationClient->save();
     });
   }
 

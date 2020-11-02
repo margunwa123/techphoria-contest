@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 $baseDir = "App\Http\Controllers";
 
+//$ GLOBAL
+Route::post('/notification/{notification}', $baseDir . '\NotificationController@readNotif');
+Route::delete('/notification/{notification}', $baseDir . '\NotificationController@destroy');
 Route::get('/', function () {
   return view('welcome');
 });

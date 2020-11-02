@@ -6,6 +6,7 @@ use App\Models\CompletedProject;
 use App\Models\PersonalRequest;
 use App\Models\Project;
 use App\Models\Request;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

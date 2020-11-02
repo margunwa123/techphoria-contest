@@ -12,7 +12,27 @@ class Project extends Model
   use HasFactory;
   protected $guarded = [];
 
+  public static function boot()
+  {
+    parent::boot();
 
+    static::created(function ($project) {
+      $notificationClient = new Notification([
+        'title' => "New project",
+        'body' => 'Project with company ' . $project->company->name . ' has been created, go check out your project tab',
+        'read' => False,
+        'user_id' => $project->company->user_id
+      ]);
+      $notificationConsultant = new Notification([
+        'title' => "New project",
+        'body' => 'Project with company ' . $project->company->name . ' has been created, go check out your project tab',
+        'read' => False,
+        'user_id' => $project->consultant->user_id
+      ]);
+      $notificationClient->save();
+      $notificationConsultant->save();
+    });
+  }
 
   public static function MakeProject($data)
   {
@@ -22,7 +42,7 @@ class Project extends Model
     return $project;
   }
 
-  public static function Validate($data)
+  public static function validate($data)
   {
     return Validator::make($data, [
       'company_id' => ['required', 'integer', 'min:0'],

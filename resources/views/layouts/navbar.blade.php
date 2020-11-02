@@ -64,6 +64,34 @@
                   </li>
                 @endif
                   <li class="nav-item dropdown">
+                      <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          <i class="fas fa-bell text-yellow notification-bell">
+                          </i>
+                          <span class="badge" id="unread-count">{{ App\Models\Notification::where(['user_id' => Auth::user()->id, 'read' => False])->count() }}</span>
+                      </a>
+
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notifications" id="notifications">
+                          @foreach (Auth::user()->notifications->take(5) as $notification)
+                            <div class="notification" id="notification-{{$notification->id}}">
+                              <div class="notification-title d-flex justify-content-between">
+                                {{ $notification->title }}
+                                <span class="ml-auto">
+                                  @if ($notification->read == False)
+                                  <button id="read-btn-{{$notification->id}}" class="btn btn-success" onclick="readNotification({{$notification->id}})">
+                                    <i class="fas fa-check"></i> Read
+                                  </button>
+                                  @endif
+                                  <button id="delete-btn-{{$notification->id}}" class="btn btn-danger" onclick="deleteNotification({{$notification->id}})">
+                                    <i class="fas fa-trash"></i>
+                                  </button>
+                                </span>
+                              </div>
+                              <div class="notification-body">{{ $notification->body }}</div>
+                            </div>
+                          @endforeach
+                      </div>
+                  </li>
+                  <li class="nav-item dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->name }}
                       </a>
@@ -90,3 +118,31 @@
       </div>
   </div>
 </nav>
+<script>
+  function readNotification(notif_id) {
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: "/notification/" + notif_id,
+      method: 'POST',
+      success: function (response) {
+        $("#unread-count").html($("#unread-count").html() - 1);
+        $("#read-btn-" + notif_id).prop('hidden', true);
+      }
+    });
+  }
+
+  function deleteNotification(notif_id) {
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: "/notification/" + notif_id,
+      method: 'DELETE',
+      success: function (response) {
+        $("#notification-" + notif_id).remove();
+      }
+    })
+  }
+</script>

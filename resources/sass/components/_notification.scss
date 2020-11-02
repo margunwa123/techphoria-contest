@@ -1,0 +1,23 @@
+.notification {
+  width: 400px;
+  padding: 5px 10px 15px 10px;
+  .notification-title {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+  }
+}
+
+.notification-bell {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  font-size: 15px;
+  height: 20px;
+  background-color: red;
+  color: white;
+}
